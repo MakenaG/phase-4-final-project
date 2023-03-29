@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '/home/glory/rails/phase-4-final-project/src/components/UploadVideo.css'
 
 
 const UploadVideo = () => {
