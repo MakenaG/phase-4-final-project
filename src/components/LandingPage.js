@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 
 function LandingPage(){
-    const [topFilms, setTopFilms] = useState([])
-
+    const [films, setFilms] = useState([])
+    
     
     return(
         <div className="bg-warning h-100px">
@@ -71,8 +71,16 @@ function LandingPage(){
                 </div>
                 
             </div>
-
-            <div></div>
+            
+            
+            <div className="contactInfo bg-dark">
+                <br/><br/>
+                <br/><br/>      
+                <h3 className="text-bg-dark">Contact Us</h3>
+                <p className="text-bg-dark">Telephone:  +254726550011</p>
+                <p className="text-bg-dark">Telephone:  +254713498594</p>
+                <p className="text-bg-dark">Email:    watchrn@gmail.com</p>
+            </div>
 
         </div>
     )
