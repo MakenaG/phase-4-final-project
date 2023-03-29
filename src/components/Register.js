@@ -18,7 +18,7 @@ function SignUp() {
       // If there are no errors, submit the form data to the server
       if (Object.keys(formErrors).length === 0) {
         try {
-          const response = await fetch('/api/signup', {
+          const response = await fetch('https://backend-dc1w.onrender.com/users', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ const PasswordReset = () => {
     e.preventDefault();
     try {
       // send POST request using fetch API
-      const response = await fetch('/api/reset-password', {
+      const response = await fetch('https://backend-dc1w.onrender.com/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

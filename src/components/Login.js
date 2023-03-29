@@ -20,7 +20,7 @@ function Login() {
       return;
     }
     try {
-      const response = await fetch("https://backend-dc1w.onrender.com/login", { // Send POST request to login endpoint
+      const response = await fetch("https://backend-dc1w.onrender.com/users/login", { // Send POST request to login endpoint
         method: "POST",
         headers: {
           "Content-Type": "application/json",
