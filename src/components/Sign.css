@@ -1,74 +1,87 @@
+    /* Define the style for the container div */
 div{
-    display: flex;
-    justify-content: center;
-    padding: 70px;
-    
+    display: flex; /* set the display property to flex */
+    justify-content: center; /* center the content horizontally */
+    padding: 70px; /* add padding around the content */
   }
   
+  /* Define the style for the form container */
   .form-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f2f2f2;
-    }
+    display: flex; /* set the display property to flex */
+    justify-content: center; /* center the content horizontally */
+    align-items: center; /* center the content vertically */
+    height: 100vh; /* set the height of the container to the full viewport height */
+    background-color: #f2f2f2; /* set the background color of the container */
+  }
+  
+  /* Define the style for the form */
+  form {
+    width: 400px; /* set the width of the form */
+    background-color: #fff; /* set the background color of the form */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* add a box-shadow to the form */
+    padding: 30px; /* add padding around the form */
+  }
+  
+  /* Define the style for the form heading */
+  h3 {
+    margin-bottom: 20px; /* add margin below the heading */
+    text-align: center; /* center the heading text horizontally */
+    color: #333; /* set the color of the heading text */
+  }
+  
+  /* Define the style for the form labels */
+  label {
+    display: block; /* set the display property to block */
+    margin-bottom: 10px; /* add margin below the label */
+    color: #555; /* set the color of the label text */
+  }
+  
+  /* Define the style for the form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%; /* set the width of the input element */
+    padding: 10px; /* add padding to the input element */
+    border: 1px solid #ccc; /* set the border of the input element */
+    border-radius: 4px; /* set the border-radius of the input element */
+    box-sizing: border-box; /* include the border and padding in the element's total width and height */
+    margin-bottom: 20px; /* add margin below the input element */
+  }
+  
+  /* Define the style for the form submit button */
+  .btn-primary {
+    background-color: #007bff; /* set the background color of the button */
+    color: #fff; /* set the color of the button text */
+    border: none; /* remove the border of the button */
+    border-radius: 4px; /* set the border-radius of the button */
+    padding: 10px; /* add padding to the button */
+    cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+    width: 100%; /* set the width of the button */
+    margin-top: 10px; /* add margin above the button */
+  }
+  
+  /* Define the style for the forgot password link */
+  .forgot-password {
+    margin-top: 20px; /* add margin above the link */
+    font-size: 14px; /* set the font size of the link */
+    text-align: right; /* align the link text to the right */
+    color: #555; /* set the color of the link text */
+  }
+  
+  /* Define the style for the forgot password link text */
+  .forgot-password a {
+    color: #007bff; /* set the color of the link text */
+    text-decoration: none; /* remove the underline from the link text */
+  }
+  
+ /* Sets the color of the text to red */
+p {
+    color: red;
     
-    form {
-      width: 400px;
-      background-color: #fff;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-    }
+    /* Sets the font size of the text to 12 pixels */
+    font-size: 12px;
     
-    h3 {
-      margin-bottom: 20px;
-      text-align: center;
-      color: #333;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 10px;
-      color: #555;
-    }
-    
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-bottom: 20px;
-    }
-    
-    .btn-primary {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 10px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
-    }
-    
-    .forgot-password {
-      margin-top: 20px;
-      font-size: 14px;
-      text-align: right;
-      color: #555;
-    }
-    
-    .forgot-password a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    
-    p {
-      color: red;
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
-    
+    /* Adds a margin of 5 pixels at the bottom of the paragraph */
+    margin-bottom: 5px;
+  }
+  
