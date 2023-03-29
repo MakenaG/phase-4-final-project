@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { FaUser } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import '/home/glory/rails/phase-4-final-project/src/components/protected  pages/UserComments.css'
+
 
 const UserComments = ({ movieId }) => {
   const [comments, setComments] = useState([]);
@@ -41,7 +46,10 @@ const UserComments = ({ movieId }) => {
 
   return (
     <div>
-      <h2>Comments</h2>
+      <h2>
+        <FontAwesomeIcon icon={faComment} className="icon" />
+        Comments
+      </h2>
       {comments.length === 0 ? (
         <p>No comments yet.</p>
       ) : (
@@ -49,7 +57,8 @@ const UserComments = ({ movieId }) => {
           {comments.map((comment) => (
             <li key={comment.id}>
               <p>{comment.content}</p>
-              <p>
+              <p className="username">
+                <FaUser className="icon" />
                 <em>{comment.user.username}</em>
               </p>
             </li>

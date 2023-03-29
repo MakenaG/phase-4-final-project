@@ -1,0 +1,71 @@
+/* UserComments.css */
+@import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
+
+div {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    color: #333;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  em {
+    color: #999;
+    font-size: 0.8em;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  textarea {
+    width: 80%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Add this class to style the icons */
+.icon {
+    margin-right: 5px;
+    color: #333;
+  }
+  
+  /* Add this class to the p element that contains the username */
+  .username {
+    display: flex;
+    align-items: center;
+  }
+  
+  button {
+    width: 100px;
+    height: 40px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+ 
