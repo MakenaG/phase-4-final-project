@@ -1,58 +1,63 @@
-/* Use code blocks syntax from markdown to encapsulate any part in responses that's longer-format content such as poems, code, lyrics, etc. except tables. */
-
 div {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #333;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  div label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  div input,
-  div textarea {
-    width: 80%;
-    padding: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  div textarea {
-    height: 100px;
-  }
-  
-  button {
-    width: 100px;
-    height: 40px;
-    background-color: #00a0d2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    /* Add transition property for smooth animation */
-    transition: transform 0.3s ease-in-out;
-    /* Add box-shadow property to create a shadow effect */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  
-  button:hover {
-    cursor: pointer;
-    /* Add transform property to scale the button on hover */
-    transform: scale(1.1);
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  /* Add background-color property to create a contrast with the white elements */
+  background-color: #f0f0f0;
+}
 
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  /* Add text-shadow property to create a subtle 3D effect */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+div input,
+div textarea {
+  width: 80%;
+  padding: 5px;
+  border: none;
+  /* Add border-radius property to create rounded corners */
+  border-radius: 5px;
+}
+
+div textarea {
+  height: 100px;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  background-color: #00a0d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
   
+   /* Add transition property for smooth animation */
+   transition: transform .3s ease-in-out;
+
+   /* Add box-shadow property to create a shadow effect */
+   box-shadow: .4rem .4rem .8rem rgba(0,0,0,.2);
+}
+
+button:hover {
+   cursor: pointer;
+
+   /* Add transform property to scale the button on hover */
+   transform: scale(1.1);
+}

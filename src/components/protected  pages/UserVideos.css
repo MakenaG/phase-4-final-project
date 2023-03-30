@@ -1,0 +1,116 @@
+.videos-container {
+    background-color: #1c1c1c;
+    padding: 50px;
+  }
+  
+  .videos-container h2 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .videos-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .videos-container li {
+    list-style: none;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    width: calc(33.33333% - 10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .videos-container li:hover {
+    transform: translateY(-5px);
+  }
+  
+  .videos-container li:nth-child(3n) {
+    margin-right: 0;
+  }
+  
+  .videos-container li:before {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+  
+  .video-thumbnail {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .videos-container li:hover .video-thumbnail {
+    transform: scale(1.1);
+  }
+  
+  .video-details {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .video-details h3 {
+    color: #222;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .video-details p {
+    color: #777;
+    font-size: 14px;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .video-details .video-username {
+    color: #999;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 768px) {
+    .videos-container li {
+      width: calc(50% - 10px);
+    }
+  
+    .videos-container li:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .videos-container li {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  

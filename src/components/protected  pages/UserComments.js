@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
-import '/home/glory/rails/phase-4-final-project/src/components/protected  pages/UserComments.css'
+import './UserComments.css'
 
 
 const UserComments = ({ movieId }) => {
