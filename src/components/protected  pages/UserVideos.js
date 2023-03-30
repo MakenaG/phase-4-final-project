@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserVideos.css';
+import UploadVideo from './UploadVideo' 
 
 const UserVideos = () => {
   const [videos, setVideos] = useState([]);
@@ -9,7 +10,7 @@ const UserVideos = () => {
       try {
         const response = await fetch('/api/videos', {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+             Authorization:`Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
           }
         });
@@ -41,6 +42,7 @@ const UserVideos = () => {
   return (
     <div className="videos-container">
       <h2>My Videos</h2>
+      <UploadVideo />
       <ul>
         {videos.map((video) => (
           <li key={video.id}>
