@@ -1,19 +1,25 @@
-import UploadVideo from './components/protected  pages/UploadVideo';
-import UserVideos from './components/protected  pages/UserVideos';
-import UserComments from './components/protected  pages/UserComments';
+import UserVideos from './components/protected-pages/UserVideos'
+// import UserComments from './components/protected  pages/UserComments';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Videos from './components/Videos';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
+import {BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <LandingPage/>
-      <UploadVideo />
-      <UserVideos/>
-      <UserComments/>
+      <BrowserRouter>
+        <Navbar/>
+        <Videos/>
+        <Routes>
+          <Route path='/' element={<LandingPage/>}></Route>
+          <Route path='/uservideos' element={<UserVideos/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
