@@ -1,98 +1,43 @@
-/* UserComments.css */
- @import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css'); */
-
-.comments-container {
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    padding: 30px;
+.user-comments {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #F8F8F8;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
   
-  .comments-container h2 {
-    color: #333;
+  .user-comments h2 {
     font-size: 24px;
-    font-weight: 700;
     margin-bottom: 20px;
+    text-align: center;
   }
   
-  .comments-container ul {
-    list-style: none;
+  .user-comments ul {
     margin: 0;
     padding: 0;
+    list-style: none;
   }
   
-  .comments-container li {
-    border-bottom: 1px solid #eee;
-    padding: 20px 0;
+  .user-comments li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
   }
   
-  .comments-container li:last-child {
+  .user-comments li:last-child {
     border-bottom: none;
   }
   
-  .comments-container li p {
-    color: #333;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 10px;
+  .user-comments p.username {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
   }
   
-  .comments-container li p.username {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-  
-  .comments-container li p.username em {
-    font-style: normal;
-    font-weight: 700;
-    margin-left: 10px;
-  }
-  
-  .comments-form {
-    margin-top: 30px;
-  }
-  
-  .comments-form label {
-    color: #333;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  .comments-form textarea {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 10px;
-    resize: none;
-    width: 100%;
-  }
-  
-  .comments-form button {
-    background-color: #0072c6;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 10px 20px;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .comments-form button:hover {
-    background-color: #005ca9;
-  }
-  
-  .comments-form button:disabled {
-    background-color: #bbb;
-    cursor: not-allowed;
-  }
-  
-  .comments-form button:disabled:hover {
-    background-color: #bbb;
+  .user-comments .icon {
+    margin-right: 10px;
+    font-size: 18px;
+    vertical-align: middle;
   }
   
