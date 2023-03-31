@@ -6,7 +6,7 @@ function Navbar(){
         <div>
             <nav className="navbar bg-dark" >
                 <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1 text-bg-dark">WatchRN</span>
+                    <span className="navbar-brand mb-0 h1 text-bg-dark">KenyaFlix</span>
                     <form className="d-flex" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-warning" type="submit">Search</button>
