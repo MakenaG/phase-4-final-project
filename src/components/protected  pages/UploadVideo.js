@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-
+import './UploadVideo.css';
 
 const UploadVideo = () => {
   const [video, setVideo] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,12 +16,17 @@ const UploadVideo = () => {
     formData.append('description', description);
 
     try {
+      setIsUploading(true);
       const response = await fetch('/api/videos', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: formData
+        body: formData,
+        onUploadProgress: (progressEvent) => {
+          const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          setUploadProgress(progress);
+        }
       });
       const data = await response.json();
       console.log(data);
@@ -29,6 +36,9 @@ const UploadVideo = () => {
       setDescription('');
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsUploading(false);
+      setUploadProgress(0);
     }
   };
 
@@ -65,7 +75,9 @@ const UploadVideo = () => {
             required
           />
         </div>
-        <button type="submit">Upload</button>
+        <button type="submit" disabled={isUploading}>
+          {isUploading ? `Uploading...${uploadProgress}%` : 'Upload'}
+        </button>
       </form>
     </div>
   );
