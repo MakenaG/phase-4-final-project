@@ -1,4 +1,4 @@
-import UserVideos from './components/protected-pages/UserVideos'
+import UserVideos from './components/protected  pages/UserVideos'
 // import UserComments from './components/protected  pages/UserComments';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,8 +15,10 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Videos/>
+        <UserVideos/>
         <Routes>
           <Route path='/' element={<LandingPage/>}></Route>
+          <Route path='/videos' element={<Videos/>}></Route>
           <Route path='/uservideos' element={<UserVideos/>}></Route>
         </Routes>
       </BrowserRouter>

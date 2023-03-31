@@ -25,6 +25,7 @@ function Videos(){
         headers: {
               "Content-Type": "application/json"
             },
+        body: JSON.stringify({id: id})
       })
         .then((res) => {
           if(res.ok){
