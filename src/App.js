@@ -17,25 +17,22 @@ import Footer from './components/footer';
 
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login')
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName)
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="App"> 
-    {/* {
-      currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-    } */}
+
       <BrowserRouter>
-        <Navbar/>
+        <Navbar 
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}/>
         {/* <Videos/> */}
         {/* <FaveVids/> */}
         {/* <Profile/> */}
         <Routes>
           <Route path='/' element={<LandingPage/>}></Route>
           <Route path='/videos' element={<Videos/>}></Route>
-          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/login' element={<Login
+           setIsLoggedIn={setIsLoggedIn}/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/favevids' element={<FaveVids/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>

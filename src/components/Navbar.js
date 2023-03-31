@@ -3,7 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import './navbar.css'
 
-function Navbar(){
+function Navbar({isLoggedIn,setIsLoggedIn}){
+  let navigate = useNavigate();
+  
+  function handleLogout() {
+    fetch("https://backend-dc1w.onrender.com/users/logout", {
+      method: "DELETE",
+    }).then(() => setIsLoggedIn(false));
+  
+    // setIsLoggedIn(false);
+  }
+  function handleLogin() {
+
+      setIsLoggedIn(true)
+      navigate("/profile");
+  }
     return(
         <div>
             {/* <nav className="navbar bg-dark" >
@@ -17,7 +31,7 @@ function Navbar(){
             </nav> */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-         <img src={logo} alt="logo" style={{ width: "100px", height: "100%", position: "absolute", top: 0, left: 0 }} />
+         {/* <img src={logo} alt="logo" style={{ width: "100px", height: "100%", position: "absolute", top: 0, left: 0 }} /> */}
           <Link className="navbar-brand" href="#">
             KenyaFlix
           </Link>
@@ -50,9 +64,15 @@ function Navbar(){
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+              {isLoggedIn?(
+                <Link className="nav-link" to="/login" onClick={handleLogout}>
+                  Log out 
+                </Link>
+              ):(
+                <Link className="nav-link" to="/profile" onClick={handleLogin}>
                   Login
                 </Link>
+              )}
               </li>
             </ul>
           </div>

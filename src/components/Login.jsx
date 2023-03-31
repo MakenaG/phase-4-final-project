@@ -1,9 +1,14 @@
 import React, {useState} from "react"
-export const Login = (props) => {
+import { useNavigate,Link } from "react-router-dom";
+
+export const Login = ({setIsLoggedIn}) => {
     const [formData, setFormData] = useState({
         email: "",
         password: ""
       });
+
+      let navigate = useNavigate();
+
       function handleChange(e) {
         setFormData({
           ...formData,
@@ -12,7 +17,28 @@ export const Login = (props) => {
       }
     const handleSumbit = (e) => {
         e.preventDefault()
-        console.log(formData);
+        
+        fetch('https://backend-dc1w.onrender.com/users/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        })
+        .then(response => {
+          if (response.ok) {
+            setIsLoggedIn(true);
+            navigate("/profile");
+          } else {
+            throw new Error('Something went wrong');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });   
     }
     return(
         <div className="form">
@@ -25,7 +51,7 @@ export const Login = (props) => {
             <input value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
             <button type="submit">Login</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account?Register here</button>
+        <button className="link-btn"><Link to="/register" >Don't have an account?Register here</Link></button>
         </div>
         </div>
     )

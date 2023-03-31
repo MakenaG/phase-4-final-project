@@ -1,12 +1,49 @@
 import React, {useState} from "react"
-export const Register = (props) => {
-    const [email, setEmail] = useState('')
-    const [pass, setPass] = useState('')
-    const [username, setUserName] = useState('')
+import { useNavigate,Link } from "react-router-dom";
 
-    const handleSumbit = () => {
-        email.preventDefault()
-        console.log(email);
+export const Register = (props) => {
+    const [formData, setFormData] = useState({
+        username:'',
+        email: "",
+        password: "",
+        
+    
+      });
+    
+      function handleChange(e) {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      }
+    let navigate = useNavigate();
+
+    const handleSumbit = (e) => {
+        e.preventDefault()
+        fetch('https://backend-dc1w.onrender.com/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+          }),
+        })
+        .then(response => {
+          if (response.ok) {
+            // setIsLoggedIn(true);
+            navigate("/login");
+          } else {
+            throw new Error('Something went wrong');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });   
+      
+        
     }
     return(
         <div className="form">
@@ -14,14 +51,14 @@ export const Register = (props) => {
           <h2>Register</h2>
         <form className="register-form" onSubmit={handleSumbit}>
             <label form="username">Username</label>
-            <input value={username} name="username" onChange={(e) => setUserName(e.target.value)} id="username" placeholder="username"/>
+            <input value={formData.username} name="username" onChange={handleChange} id="username" placeholder="username"/>
             <label form="email">email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+            <input value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label form="pasword">password</label>
-            <input value={pass} onChange={(e) => setPass(e.target.value)}type="password" placeholder="*******" id="password" name="password" />
-            <button type="submit">Login</button>
+            <input value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
+            <button type="submit">Register</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch("login")}>Already have an account?Login here</button>
+        <button className="link-btn"><Link to="/login">Already have an account?Login here</Link></button>
         </div>
         </div>
     )
