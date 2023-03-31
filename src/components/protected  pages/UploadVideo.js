@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './UploadVideo.css';
 
-const UploadVideo = () => {
+const UploadVideo = ({ setVideos }) => {
   const [video, setVideo] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -17,7 +17,7 @@ const UploadVideo = () => {
 
     try {
       setIsUploading(true);
-      const response = await fetch('/api/videos', {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -34,6 +34,19 @@ const UploadVideo = () => {
       setVideo(null);
       setTitle('');
       setDescription('');
+  
+      // Fetch new video list
+      const videoResponse = await fetch('', {
+        headers: {
+          'Authorization': `Bearer ${localStorage?.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+      const videoData = await videoResponse.json();
+      if (videoData) {
+        setVideos(videoData);
+      }
     } catch (error) {
       console.error(error);
     } finally {

@@ -5,7 +5,7 @@ function LandingPage() {
 
   useEffect(() => {
     // Fetch films data and update state
-    fetch("https://api.example.com/films")
+    fetch("https://backend-dc1w.onrender.com/all_videos")
       .then((response) => response.json())
       .then((data) => setFilms(data));
   }, []);
