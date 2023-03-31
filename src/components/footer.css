@@ -1,0 +1,14 @@
+.list{
+    /* margin-top: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: yellow;
+}
+.con{
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
