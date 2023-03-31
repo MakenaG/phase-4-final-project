@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import UserVideos from './components/protected  pages/UserVideos';
 //import UserComments from './components/protected  pages/UserComments';
 
-// import './App.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Videos from './components/Videos';
 import Navbar from './components/Navbar';

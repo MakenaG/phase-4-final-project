@@ -18,7 +18,7 @@ function Footer(){
               icon={faLinkedin}
               color="yellow"
               size="2x"
-              className="anchor-icon"
+              className="anchor"
             />
           </a>
         </li>
@@ -31,8 +31,8 @@ function Footer(){
             <FontAwesomeIcon
               icon={faGithub}
               color="yellow"
-              size="3x"
-              className="anchor-icon"
+              size="2x"
+              className="anchor"
             />
           </a>
         </li>
@@ -46,7 +46,7 @@ function Footer(){
               icon={faInstagram}
               size="2x"
               color="yellow"
-              className="anchor-icon"
+              className="anchor"
             />
           </a>
         </li>
@@ -56,7 +56,7 @@ function Footer(){
               icon={faTwitter}
               size="2x"
               color=" yellow"
-              className="anchor-icon"
+              className="anchor"
             />
           </a>
         </li>

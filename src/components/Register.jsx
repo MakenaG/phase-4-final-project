@@ -9,6 +9,7 @@ export const Register = (props) => {
         console.log(email);
     }
     return(
+        <div className="form">
         <div className="auth-form-container">
           <h2>Register</h2>
         <form className="register-form" onSubmit={handleSumbit}>
@@ -21,6 +22,7 @@ export const Register = (props) => {
             <button type="submit">Login</button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch("login")}>Already have an account?Login here</button>
+        </div>
         </div>
     )
 }
