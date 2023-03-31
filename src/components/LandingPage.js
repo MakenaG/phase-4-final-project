@@ -17,7 +17,7 @@ function LandingPage() {
   return (
     <div className="bg-warning">
     <br/> 
-    <div className="container mb-2">
+    <div className="container">
       <div id="carouselExampleCaptions" className="carousel slide">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -67,8 +67,8 @@ function LandingPage() {
         </button>
       </div>
     </div>
-    <div className="topFilmsSection container mb-5 mh-50%">
-      <h2>Top Films</h2>
+    <div className="topFilmsSection container mt-3 mh-50%">
+      <center><h2>Top Films</h2></center>
       <div className="row row-cols-1 row-cols-md-4 g-4">
         {films.map(film => (
           <div className="col" key={film.id}>

@@ -4,7 +4,7 @@ import {faLinkedin,faGithub,faTwitter,faInstagram} from '@fortawesome/free-brand
 import './footer.css'
 function Footer(){
     return(
-       <div className="con bg-dark">
+       <div className="con bg-dark mb-0">
         <center>
         <br />
         <ul>
@@ -18,7 +18,7 @@ function Footer(){
               icon={faLinkedin}
               color="yellow"
               size="2x"
-              className="anchor"
+              id="anchr"
             />
           </a>
         </li>
@@ -32,7 +32,7 @@ function Footer(){
               icon={faGithub}
               color="yellow"
               size="2x"
-              className="anchor"
+              id="anchr"
             />
           </a>
         </li>
@@ -46,7 +46,7 @@ function Footer(){
               icon={faInstagram}
               size="2x"
               color="yellow"
-              className="anchor"
+              id="anchr"
             />
           </a>
         </li>
@@ -56,16 +56,16 @@ function Footer(){
               icon={faTwitter}
               size="2x"
               color=" yellow"
-              className="anchor"
+              id="anchr"
             />
           </a>
         </li>
       </ul>
         
-        <h3 className="text-bg-dark">Contact Us</h3>
-        <p className="text-bg-dark">Telephone: +254726550011</p>
-        <p className="text-bg-dark">Telephone: +254713498594</p>
-        <p className="text-bg-dark">Email: KenyaFlix@gmail.com</p>
+        <h3 className="text">Contact Us</h3>
+        <p className="text">Telephone: +254726550011</p>
+        <p className="text">Telephone: +254713498594</p>
+        <p className="text">Email: KenyaFlix@gmail.com</p>
 
         </center>
       </div>
