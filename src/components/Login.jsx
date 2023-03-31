@@ -49,9 +49,9 @@ export const Login = ({setIsLoggedIn}) => {
             <input value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label form="pasword">password</label>
             <input value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
-            <button type="submit">Login</button>
+            <button className="login" type="submit">Login</button>
         </form>
-        <button className="link-btn"><Link to="/register" >Don't have an account?Register here</Link></button>
+        <p  id="link-btn" ><Link to="/register"  >Don't have an account?Register here</Link></p>
         </div>
         </div>
     )

@@ -56,9 +56,9 @@ export const Register = (props) => {
             <input value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label form="pasword">password</label>
             <input value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
-            <button type="submit">Register</button>
+            <button className="login" type="submit">Register</button>
         </form>
-        <button className="link-btn"><Link to="/login">Already have an account?Login here</Link></button>
+        <p id="link-btn" ><Link to="/login">Already have an account?Login here</Link></p>
         </div>
         </div>
     )

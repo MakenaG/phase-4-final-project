@@ -6,8 +6,10 @@
     justify-content: center;
     /* padding: 10px; */
     color: yellow;
+    padding: 0;
 }
 .con{
+    padding-bottom: 0;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -17,7 +19,7 @@
     color: yellow;
 }
 
-#anchr{
+/* #anchr{
     display: inline-block;
     margin: 0px;
-}
+} */
