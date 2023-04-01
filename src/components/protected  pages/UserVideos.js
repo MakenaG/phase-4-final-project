@@ -21,7 +21,7 @@ const UserVideos = () => {
         }
       } catch (error) {
         console.error(error);
-        setError('Failed to fetch videos');
+        setError('');
       }
     };
     fetchData();

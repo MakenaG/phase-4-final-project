@@ -1,102 +1,88 @@
-.upload-form {
-  background-color: #1f1f1f;
-  color: #fff;
-  border-radius: 10px;
-  padding: 40px;
+.upload-container {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.upload-form h2 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 40px;
+.upload-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.upload-header h2 {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: #b7ba15;
+}
+
+.upload-icon {
+  width: 50px;
+  height: 50px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1111/1111571.png');
+  background-size: contain;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .upload-form label {
-  font-size: 24px;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
-.upload-form input,
+.upload-form input[type="text"],
 .upload-form textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 5px;
   border: none;
-  background-color: #2b2b2b;
-  color: #fff;
-  font-size: 18px;
+  background-color: #570b0b;
 }
 
-.upload-form input:focus,
-.upload-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 10px #fff;
+.upload-form input[type="file"] {
+  margin-top: 0.5rem;
 }
 
-.upload-form button {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 30px;
-  border-radius: 5px;
+.upload-form button[type="submit"] {
+  padding: 0.5rem 1rem;
   border: none;
-  background-color: #e50914;
-  color: hsl(0, 18%, 92%);
-  font-size: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.upload-form button:hover {
-  background-color: #fff;
-  color: #e50914;
-}
-
-.upload-form input[type='file'] {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 20px;
-  font-size: 18px;
-}
-
-.upload-form input[type='file']::before {
-  content: 'Choose Video';
-  display: inline-block;
-  background-color: #2b2b2b;
-  color: #fff;
-  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 18px;
-  white-space: nowrap;
+  background-color: hsl(54, 85%, 43%);
+  color: #b7ba15;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.upload-form input[type='file']::-webkit-file-upload-button {
-  visibility: hidden;
+.upload-form button[type="submit"]:hover {
+  background-color: #ff0042;
 }
 
-.upload-form input[type='file']:hover::before {
-  background-color: #fff;
-  color: #e50914;
+.upload-progress {
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  background-color: #f2f2f2;
 }
 
-.upload-form .success-message {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 24px;
-  animation-name: fade-in;
-  animation-duration: 1s;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.upload-progress-filled {
+  height: 100%;
+  border-radius: 5px;
+  background-color: #cc1034;
+  transition: width 0.3s ease-in-out;
 }

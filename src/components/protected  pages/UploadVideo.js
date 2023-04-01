@@ -56,8 +56,9 @@ const UploadVideo = ({ setVideos }) => {
   };
 
   return (
-    <div>
-      <h2>Upload Video</h2>
+    <div className="upload-header">
+  <h2>Upload Video</h2>
+  <div className="upload-icon"></div>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
