@@ -8,10 +8,12 @@ import { isUserLoggedIn, getUser,getToken } from "./utils/auth";
 function Videos(){
     const [allVids,setAllVids] = useState([])
     const [errors,setErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false);
     const userId = getUser()
     const token = getToken()
+
     useEffect(()=>{
-        fetch(`http://127.0.0.1:3000/all_videos`)
+        fetch(`https://backend-dc1w.onrender.com/all_videos`)
         .then(res =>{
           if(res.ok){
             res.json().then((data)=>setAllVids(data))
@@ -20,9 +22,21 @@ function Videos(){
           }
         })
     },[])
+
+    useEffect(() => {
+      if (showErrors) {
+        const timeout = setTimeout(() => {
+          setErrors([]);
+          setShowErrors(false);
+        }, 5000);
+
+        return () => clearTimeout(timeout);
+      }
+    }, [showErrors]);
+
     console.log(errors)
     function handleLike(id) {
-      fetch(`http://127.0.0.1:3000/all_videos/${id}`, {
+      fetch(`https://backend-dc1w.onrender.com/all_videos/${id}`, {
         method: "POST",
         headers: {
               "Content-Type": "application/json",
@@ -39,7 +53,10 @@ function Videos(){
             setAllVids(updatedVids);
           })
         }else{
-          res.json().then((err)=>setErrors([err.errors]))
+          res.json().then((err)=>{
+            setErrors([err.errors]);
+            setShowErrors(true);
+          })
         }})
 
     }

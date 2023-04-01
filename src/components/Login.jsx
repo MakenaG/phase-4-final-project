@@ -24,7 +24,7 @@ export const Login = ({setIsLoggedIn}) => {
           alert("Please enter your email and password.");
           return;}
               
-        fetch('http://127.0.0.1:3000/users/login', {
+        fetch('https://backend-dc1w.onrender.com/users/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
