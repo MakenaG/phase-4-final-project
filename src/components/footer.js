@@ -4,7 +4,7 @@ import {faLinkedin,faGithub,faTwitter,faInstagram} from '@fortawesome/free-brand
 import './footer.css'
 function Footer(){
     return(
-       <div className="con bg-dark mb-0">
+       <div className="con">
         <center>
         <ul>
         <li className="list">

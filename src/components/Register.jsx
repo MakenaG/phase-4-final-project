@@ -1,13 +1,13 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { useNavigate,Link } from "react-router-dom";
 
 export const Register = (props) => {
+  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         username:'',
         email: "",
-        password: "",
-        
-    
+        password: "", 
       });
     
       function handleChange(e) {
@@ -17,9 +17,15 @@ export const Register = (props) => {
         });
       }
     let navigate = useNavigate();
-
+    
+    useEffect(() => {
+      console.log(loading);
+    }, [loading])
     const handleSumbit = (e) => {
         e.preventDefault()
+        setLoading(true)
+        console.log(loading)
+        console.log("loading:", loading)
         fetch('https://backend-dc1w.onrender.com/users', {
           method: 'POST',
           headers: {
@@ -36,14 +42,11 @@ export const Register = (props) => {
             // setIsLoggedIn(true);
             navigate("/login");
           } else {
-            throw new Error('Something went wrong');
+            response.json().then((err)=>setErrors(err.errors))
+            // throw new Error('Something went wrong');
           }
-        })
-        .catch(error => {
-          console.error(error);
-        });   
-      
-        
+          setLoading(false)
+        }) 
     }
     return(
         <div className="form">
@@ -56,9 +59,23 @@ export const Register = (props) => {
             <input className="input" value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label className="label" form="pasword">password</label>
             <input className="input" value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
-            <button className="login" type="submit">Register</button>
+            { loading ? (<div className="d-flex align-items-center">
+                                        <strong>Please Wait...</strong>
+                        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                        </div> ): (
+                        <button className="login" type="submit">Register</button>
+                        )
+            }
+         {Object.keys(errors).length > 0 &&
+            Object.entries(errors).map(([key, value]) => {
+              return value.map((error, index) => (
+                <div key={`${key}-${index}`} className="text-danger">
+                  {error}
+                </div>
+              ));
+            })}
         </form>
-        <p id="link-btn" ><Link to="/login">Already have an account?Login here</Link></p>
+        <Link to="/login"><p id="link-btn" >Already have an account?Login here</p></Link>
         </div>
         </div>
     )

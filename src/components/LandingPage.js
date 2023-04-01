@@ -3,9 +3,12 @@ import antman from './images/antman.jpg'
 import avatar from './images/avatar.jpg'
 import endgame from './images/end-game.jpg'
 import './landing.css'
+import { useNavigate } from "react-router-dom";
+
 
 function LandingPage() {
   const [films, setFilms] = useState([]);
+  let navigate = useNavigate()
 
   useEffect(() => {
     // Fetch films data and update state
@@ -13,6 +16,9 @@ function LandingPage() {
       .then((response) => response.json())
       .then((data) => setFilms(data));
   }, []);
+  function handleMovie(film){
+    navigate(`/movies/${film.id}`)
+  }
 
   return (
     <div className="bg-warning">
@@ -72,12 +78,12 @@ function LandingPage() {
       <div className="row row-cols-1 row-cols-md-4 g-4">
         {films.map(film => (
           <div className="col" key={film.id}>
-            <div className="card">
+            <div className="card" onClick={()=>handleMovie(film)}>
               <img src={film.image_src} className="card-img-top" alt={film.title} />
               {/* <div className="card-body">
                 <h5 className="card-title">{film.title}</h5>
                 <p className="card-text">{film.description}</p>
-                <button className="btn btn-primary">Watch Now</button>
+                <Link to={`/videos/${film.id}`}><button className="btn btn-primary">Watch Now</button></Link>
               </div> */}
             </div>
           </div>

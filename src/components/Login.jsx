@@ -3,6 +3,8 @@ import { useNavigate,Link } from "react-router-dom";
 import { saveUser,storeToken } from "./utils/auth";
 
 export const Login = ({setIsLoggedIn}) => {
+  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -19,11 +21,7 @@ export const Login = ({setIsLoggedIn}) => {
       }
     const handleSumbit = (e) => {
         e.preventDefault()
-          // Client-side validation
-        if (!formData.email || !formData.password) {
-          alert("Please enter your email and password.");
-          return;}
-              
+        setLoading(true)  
         fetch('https://backend-dc1w.onrender.com/users/login', {
           method: 'POST',
           headers: {
@@ -40,21 +38,18 @@ export const Login = ({setIsLoggedIn}) => {
             // setIsLoggedIn(true);
             // navigate("/profile");
           } else {
-            throw new Error('Something went wrong');
+            response.json().then((err)=>setErrors(err.errors))
           }
+          setLoading(false)
         })
         .then(data => {
           // Store session ID in browser storage
           saveUser(data.user.id)
           storeToken(data.token)
-           console.log(data.user.id)
-         
-  
+          //  console.log(data.user.id)
           navigate('/profile');
         })
-        .catch(error => {
-          console.error(error);
-        });   
+       ;   
     }
     return(
         <div className="form">
@@ -65,9 +60,23 @@ export const Login = ({setIsLoggedIn}) => {
             <input className="input" value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label className="label" form="pasword">password</label>
             <input className="input" value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
-            <button className="login" type="submit">Login</button>
+            { loading ? (<div className="d-flex align-items-center">
+                                        <strong>Please Wait...</strong>
+                        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                        </div> ): (
+                        <button className="login" type="submit">Login</button>
+                        )
+            }
+         {Object.keys(errors).length > 0 &&
+            Object.entries(errors).map(([key, value]) => {
+              return value.map((error, index) => (
+                <div key={`${key}-${index}`} className="text-danger">
+                  {error}
+                </div>
+              ));
+            })}
         </form>
-        <p  id="link-btn" ><Link to="/register"  >Don't have an account?Register here</Link></p>
+        <Link to="/register"  ><p id="link-btn" >Don't have an account?Register here</p></Link>
         </div>
         </div>
     )

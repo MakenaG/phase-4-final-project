@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import './navbar.css'
-import { removeUser, } from "./utils/auth";
+import { removeUser, isUserLoggedIn} from "./utils/auth";
 
 function Navbar({isLoggedIn,setIsLoggedIn}){
   let navigate = useNavigate();
@@ -65,7 +65,7 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
                 </Link>
               </li>
               <li className="nav-item">
-              {isLoggedIn?(
+              {isUserLoggedIn()?(
                 <Link className="nav-link" to="/login" onClick={handleLogout}>
                   Log out 
                 </Link>
