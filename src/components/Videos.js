@@ -16,7 +16,11 @@ function Videos(){
         fetch(`https://backend-dc1w.onrender.com/all_videos`)
         .then(res =>{
           if(res.ok){
-            res.json().then((data)=>setAllVids(data))
+            res.json().then((data)=>{
+              // setAllVids(data)
+              const updatedVids = data.map((vid) => ({ ...vid, error: false }));
+             setAllVids(updatedVids);
+            })
           }else{
             res.json().then((err)=>setErrors(err.errors))
           }
@@ -53,7 +57,11 @@ function Videos(){
             setAllVids(updatedVids);
           })
         }else{
-          res.json().then((err)=>{
+          res.json().then((err) => {
+            const updatedVids = allVids.map((vid) =>
+              vid.id === id ? { ...vid, error: true } : vid
+            );
+            setAllVids(updatedVids);
             setErrors([err.errors]);
             setShowErrors(true);
           })
@@ -90,7 +98,7 @@ function Videos(){
                     <FontAwesomeIcon icon={faHeart}>
                     {vid.likes} Likes </FontAwesomeIcon>Like {vid.likes}</Button>
                   <Button variant="primary">Watch now</Button>
-                  {errors.length > 0 && (
+                  {vid.error  && (
                     <div className="text-danger mt-3">
                       {errors.map((error, index) => (
                         <p key={index}>{error}</p>
