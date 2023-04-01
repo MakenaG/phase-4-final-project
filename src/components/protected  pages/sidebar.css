@@ -5,6 +5,7 @@
     top: 10;
     left: 0;
     padding-top: 40px;
+    padding:10px;
     text-decoration: none;
     /* background-color: black; */
     }
@@ -13,7 +14,7 @@
     padding: 6px;
     font-size: 20px;
     display: block;
-    text-decoration: none;
+    /* text-decoration: none; */
     color: black;
     }
     

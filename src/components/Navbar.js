@@ -2,17 +2,20 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import './navbar.css'
-import { removeUser, isUserLoggedIn} from "./utils/auth";
+import { removeUser} from "./utils/auth";
 
 function Navbar({isLoggedIn,setIsLoggedIn}){
   let navigate = useNavigate();
   
+  
   function handleLogout() {
     fetch("https://backend-dc1w.onrender.com/users/logout", {
       method: "DELETE",
-    }).then(() => removeUser())
+    }).then(() => {
+      removeUser()
+      setIsLoggedIn(false);
+    })
       
-    setIsLoggedIn(false);
   }
   function handleLogin() {
 
@@ -55,17 +58,17 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Movies
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/videos">
                   Videos
                 </Link>
               </li>
               <li className="nav-item">
-              {isUserLoggedIn()?(
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+              {isLoggedIn?(
                 <Link className="nav-link" to="/login" onClick={handleLogout}>
                   Log out 
                 </Link>
