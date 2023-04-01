@@ -7,25 +7,25 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
   
-  .user-comments h2 {
+  .user-comments .comment-head {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  .user-comments ul {
+  .user-comments .comm-ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
   
-  .user-comments li {
+  .user-comments .comm-list {
     margin-bottom: 20px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
   }
   
-  .user-comments li:last-child {
+  .user-comments .comm-list:last-child {
     border-bottom: none;
   }
   

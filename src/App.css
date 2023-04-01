@@ -1,4 +1,4 @@
-.App {
+.form {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -7,7 +7,7 @@
   color: yellow;
   background-color:rgba(0, 0, 0, 0.9)
 }
-.auth-form-container, .login-form, .register-form {
+.auth-form-container, .login-form, .register-form, .passwordreset-form {
   display: flex;
   flex-direction: column;
   background-color: rgb(29, 27, 27);
@@ -22,20 +22,20 @@
   }
 }
 
-label {
+.label {
   text-align: left;
   padding: 0.25rem 0;
   background-color: rgb(27, 26, 26);
 }
 
-input {
+.input {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
   border-radius: 10px;
 }
 
-button {
+.login {
   border: none;
   background-color: yellow;
   padding: 20px;
@@ -43,9 +43,10 @@ button {
   cursor: pointer;
   color: black;
   font-weight: bold;
+  margin-top: 5px;
 }
 
-.link-btn {
+#link-btn {
   background: none;
   color: yellow;
   text-decoration: underline;
