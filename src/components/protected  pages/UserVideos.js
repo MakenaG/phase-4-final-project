@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserVideos.css';
+import UploadVideo from './UploadVideo' 
 
 const UserVideos = () => {
   const [videos, setVideos] = useState([]);
@@ -10,10 +11,9 @@ const UserVideos = () => {
       try {
         const response = await fetch('', {
           headers: {
-            'Authorization': `Bearer ${localStorage?.getItem('token')}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }          
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
         });
         const data = await response.json();
         if (data) {
@@ -46,26 +46,21 @@ const UserVideos = () => {
   return (
     <div className="videos-container">
       <h2>My Videos</h2>
-      {error && <p>{error}</p>}
-      {videos.length > 0 ? (
-        <ul>
-          {videos.map((video) => (
-            <li key={video.id}>
-              <div className="video-thumbnail">
-                <img src={video.thumbnail} alt={video.title} />
-              </div>
-              <div className="video-details">
-                <h3>{video.title}</h3>
-                <p className="video-username">{video.user.username}</p>
-                <p className="video-description">{video.description}</p>
-                <button onClick={() => handleDelete(video.id)}>Delete</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No videos found.</p>
-      )}
+      <ul>
+        {videos.map((video) => (
+          <li key={video.id}>
+            <div className="video-thumbnail">
+              <img src={video.thumbnail} alt={video.title} />
+            </div>
+            <div className="video-details">
+              <h3>{video.title}</h3>
+              <p className="video-username">{video.user.username}</p>
+              <p className="video-description">{video.description}</p>
+              <button onClick={() => handleDelete(video.id)}>Delete</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
