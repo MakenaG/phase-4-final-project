@@ -15,7 +15,7 @@ function Footer(){
           >
             <FontAwesomeIcon
               icon={faLinkedin}
-              color="yellow"
+              color="white"
               size="2x"
               id="anchr"
             />
@@ -29,7 +29,7 @@ function Footer(){
           >
             <FontAwesomeIcon
               icon={faGithub}
-              color="yellow"
+              color="white"
               size="2x"
               id="anchr"
             />
@@ -44,7 +44,7 @@ function Footer(){
             <FontAwesomeIcon
               icon={faInstagram}
               size="2x"
-              color="yellow"
+              color="white"
               id="anchr"
             />
           </a>
@@ -54,7 +54,7 @@ function Footer(){
             <FontAwesomeIcon
               icon={faTwitter}
               size="2x"
-              color=" yellow"
+              color=" white"
               id="anchr"
             />
           </a>

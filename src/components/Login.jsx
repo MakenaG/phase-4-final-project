@@ -67,14 +67,21 @@ export const Login = ({setIsLoggedIn}) => {
                         <button className="login" type="submit">Login</button>
                         )
             }
-         {Object.keys(errors).length > 0 &&
+         {/* {Object.keys(errors).length > 0 &&
             Object.entries(errors).map(([key, value]) => {
               return value.map((error, index) => (
                 <div key={`${key}-${index}`} className="text-danger">
                   {error}
                 </div>
               ));
-            })}
+            })} */}
+             {errors.length > 0 && (
+                <div className="text-danger">
+                {errors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                ))}
+                </div>
+            )}
         </form>
         <Link to="/reset"  ><p id="link-btn" >Forgot your password? Reset here</p></Link>
         <Link to="/register"  ><p id="link-btn" >Don't have an account?Register here</p></Link>

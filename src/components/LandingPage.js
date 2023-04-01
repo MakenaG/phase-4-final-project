@@ -8,14 +8,26 @@ import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const [films, setFilms] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate()
 
   useEffect(() => {
+    setLoading(true)  
     // Fetch films data and update state
     fetch("https://backend-dc1w.onrender.com/movies")
-      .then((response) => response.json())
-      .then((data) => setFilms(data));
-  }, []);
+      .then((res) => {
+        if(res.ok){
+          res.json().then((data)=>{
+            setFilms(data)
+          })
+        }else{
+          res.json().then((err)=>setErrors(err.errors))
+        }
+        setLoading(false)
+      })
+  },[setLoading, setFilms, setErrors])
+  
   function handleMovie(film){
     navigate(`/movies/${film.id}`)
   }
@@ -75,40 +87,29 @@ function LandingPage() {
     </div>
     <div className="topFilmsSection container mt-3 mh-50%">
       <center><h2>Top Films</h2></center>
+      {errors.length > 0 && (
+          <div className="text-danger">
+          {errors.map((error, index) => (
+              <p key={index}>{error}</p>
+          ))}
+          </div>
+      )}
+      { loading ? (<div className="d-flex align-items-center">
+                                        <strong>Please Wait...</strong>
+                        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                        </div> ): (
       <div className="row row-cols-1 row-cols-md-4 g-4">
         {films.map(film => (
           <div className="col" key={film.id}>
             <div className="card" onClick={()=>handleMovie(film)}>
               <img src={film.image_src} className="card-img-top" alt={film.title} />
-              {/* <div className="card-body">
-                <h5 className="card-title">{film.title}</h5>
-                <p className="card-text">{film.description}</p>
-                <Link to={`/videos/${film.id}`}><button className="btn btn-primary">Watch Now</button></Link>
-              </div> */}
             </div>
           </div>
         ))}
       </div>
+       )
+      }
     </div>
-
-    {/* <div className="generalFilms bg-dark">
-      <h2 className="text-light">General Films</h2>
-      
-
-        <div className="row row-cols-1 row-cols-md-2 g-4">
-          <div className="col">
-            <div className="card bg-warning w-20">
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Card Title</h5>
-                <p className="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
     
   );

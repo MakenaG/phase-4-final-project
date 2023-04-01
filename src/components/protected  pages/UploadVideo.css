@@ -41,7 +41,7 @@
   padding: 10px 30px;
   border-radius: 5px;
   border: none;
-  background-color: #e50914;
+  background-color: rgb(255, 187, 0);
   color: hsl(0, 18%, 92%);
   font-size: 24px;
   cursor: pointer;
@@ -50,7 +50,7 @@
 
 .upload-form button:hover {
   background-color: #fff;
-  color: #e50914;
+  color: rgb(255, 187, 0);
 }
 
 .upload-form input[type='file'] {

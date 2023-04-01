@@ -18,6 +18,9 @@ const saveUser = (uid) => {
   const storeToken = (token) => {
     localStorage.setItem('token', token);
   };
+  export function removeUserToken() {
+    localStorage.removeItem("token");
+  }
   
   const getToken = () => {
     return localStorage.getItem('token');

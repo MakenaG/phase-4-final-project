@@ -3,7 +3,7 @@
     display: inline;
     padding: 40px;
     margin: 40px;
-    color: yellow;
+    color: white;
     padding: 0;
 }
 .con{
@@ -14,7 +14,7 @@
     background: linear-gradient(180deg, rgb(255, 196, 0) 33%, rgba(4,4,4,1) 100%);
 }
 .text{
-    color: yellow;
+    color: white;
 }
 
 /* #anchr{

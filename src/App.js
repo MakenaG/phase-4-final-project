@@ -16,6 +16,7 @@ import Footer from './components/footer';
 import { AuthProvider } from 'react-auth-kit';
 import OneVid from './components/OneVid';
 import OneMovie from './components/oneMovie';
+import SideBar from './components/protected  pages/SideBar';
 import { isUserLoggedIn } from './components/utils/auth';
 import { Passwordreset } from './components/Passwordreset';
 function App() {
@@ -24,6 +25,24 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(isLoggedIn);
   const isLoginPage = location.pathname === '/login' || location.pathname === '/register'|| location.pathname === '/reset';
 
+  const renderComponentWithSidebar = (Component) => {
+    return (
+      <>
+        {/* <Navbar isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn} /> */}
+        <div className="container-fluid bg-warning">
+          <div className="row">
+            <div className="col-md-2">
+              <SideBar />
+            </div>
+            <div className="col-md-10">
+              <Component />
+            </div>
+          </div>
+        </div>
+        {/* {isLoginPage ? null : <Footer />} */}
+      </>
+    );
+  };
   return (
     <div className="App"> 
       <AuthProvider authType = {'cookie'}
@@ -42,10 +61,14 @@ function App() {
            setIsLoggedIn={setLoggedIn}/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/reset' element={<Passwordreset/>}></Route>
-          <Route path='/favevids' element={<FaveVids/>}></Route>
+          {/* <Route path='/favevids' element={<FaveVids/>}></Route>
           <Route path='/usercomments' element={<UserComments/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
-          <Route path='/uservideos' element={<UserVideos/>}></Route>
+          <Route path='/uservideos' element={<UserVideos/>}></Route> */}
+          <Route path="/favevids" element={renderComponentWithSidebar(FaveVids)} />
+          <Route path="/usercomments" element={renderComponentWithSidebar(UserComments)} />
+          <Route path="/profile" element={renderComponentWithSidebar(Profile)} />
+          <Route path="/uservideos" element={renderComponentWithSidebar(UserVideos)} />
         </Routes>
         {isLoginPage?( null):(<Footer/>)}
       </AuthProvider>

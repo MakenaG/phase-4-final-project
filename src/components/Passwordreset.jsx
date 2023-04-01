@@ -32,7 +32,6 @@ export const Passwordreset = (props) => {
           setLoading(false)
         }) 
     }
-    console.log(errors)
     function handleChange(e) {
         setFormData({
             ...formData,
