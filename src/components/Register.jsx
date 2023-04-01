@@ -23,9 +23,6 @@ export const Register = (props) => {
     }, [loading])
     const handleSumbit = (e) => {
         e.preventDefault()
-        setLoading(true)
-        console.log(loading)
-        console.log("loading:", loading)
         fetch('https://backend-dc1w.onrender.com/users', {
           method: 'POST',
           headers: {
@@ -39,11 +36,9 @@ export const Register = (props) => {
         })
         .then(response => {
           if (response.ok) {
-            // setIsLoggedIn(true);
             navigate("/login");
           } else {
             response.json().then((err)=>setErrors(err.errors))
-            // throw new Error('Something went wrong');
           }
           setLoading(false)
         }) 

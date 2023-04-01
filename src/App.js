@@ -17,12 +17,12 @@ import { AuthProvider } from 'react-auth-kit';
 import OneVid from './components/OneVid';
 import OneMovie from './components/oneMovie';
 import { isUserLoggedIn } from './components/utils/auth';
-
+import { Passwordreset } from './components/Passwordreset';
 function App() {
   const location = useLocation();
   const isLoggedIn = isUserLoggedIn();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn);
-  const isLoginPage = location.pathname === '/login' || location.pathname === '/register';
+  const isLoginPage = location.pathname === '/login' || location.pathname === '/register'|| location.pathname === '/reset';
 
   return (
     <div className="App"> 
@@ -41,6 +41,7 @@ function App() {
           <Route path='/login' element={<Login
            setIsLoggedIn={setLoggedIn}/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
+          <Route path='/reset' element={<Passwordreset/>}></Route>
           <Route path='/favevids' element={<FaveVids/>}></Route>
           <Route path='/usercomments' element={<UserComments/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>

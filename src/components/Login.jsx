@@ -76,6 +76,7 @@ export const Login = ({setIsLoggedIn}) => {
               ));
             })}
         </form>
+        <Link to="/reset"  ><p id="link-btn" >Forgot your password? Reset here</p></Link>
         <Link to="/register"  ><p id="link-btn" >Don't have an account?Register here</p></Link>
         </div>
         </div>
