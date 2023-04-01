@@ -22,13 +22,13 @@
   }
 }
 
-label {
+.label {
   text-align: left;
   padding: 0.25rem 0;
   background-color: rgb(27, 26, 26);
 }
 
-input {
+.input {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;

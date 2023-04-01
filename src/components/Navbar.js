@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import './navbar.css'
+import { removeUser, } from "./utils/auth";
 
 function Navbar({isLoggedIn,setIsLoggedIn}){
   let navigate = useNavigate();
@@ -9,9 +10,9 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
   function handleLogout() {
     fetch("https://backend-dc1w.onrender.com/users/logout", {
       method: "DELETE",
-    }).then(() => setIsLoggedIn(false));
-  
-    // setIsLoggedIn(false);
+    }).then(() => removeUser())
+      
+    setIsLoggedIn(false);
   }
   function handleLogin() {
 

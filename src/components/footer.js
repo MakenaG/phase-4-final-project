@@ -6,13 +6,12 @@ function Footer(){
     return(
        <div className="con bg-dark mb-0">
         <center>
-        <br />
         <ul>
         <li className="list">
           <a
             href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
+            // target="_blank"
+            // rel="noreferrer"
           >
             <FontAwesomeIcon
               icon={faLinkedin}
@@ -25,8 +24,8 @@ function Footer(){
         <li className="list">
           <a
             href="https://github.com/"
-            target="_blank"
-            rel="noreferrer"
+            // target="_blank"
+            // rel="noreferrer"
           >
             <FontAwesomeIcon
               icon={faGithub}
@@ -39,8 +38,8 @@ function Footer(){
         <li className="list">
           <a
             href="https://www.instagram.com/"
-            rel="noreferrer"
-            target="_blank"
+            // rel="noreferrer"
+            // target="_blank"
           >
             <FontAwesomeIcon
               icon={faInstagram}

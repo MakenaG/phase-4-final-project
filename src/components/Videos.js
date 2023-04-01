@@ -3,14 +3,15 @@ import React, {useState, useEffect} from "react";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart} from "@fortawesome/free-solid-svg-icons";
-
+import { isUserLoggedIn, getUser,getToken } from "./utils/auth";
 
 function Videos(){
     const [allVids,setAllVids] = useState([])
     const [errors,setErrors] = useState([])
-
+    const userId = getUser()
+    const token = getToken()
     useEffect(()=>{
-        fetch(`https://backend-dc1w.onrender.com/all_videos`)
+        fetch(`http://127.0.0.1:3000/all_videos`)
         .then(res =>{
           if(res.ok){
             res.json().then((data)=>setAllVids(data))
@@ -19,14 +20,15 @@ function Videos(){
           }
         })
     },[])
-    
+    console.log(errors)
     function handleLike(id) {
-      fetch(`https://backend-dc1w.onrender.com/all_videos/${id}`, {
+      fetch(`http://127.0.0.1:3000/all_videos/${id}`, {
         method: "POST",
         headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${token}`
             },
-        body: JSON.stringify({id: id})
+        body: JSON.stringify({user_id: userId})
       })
         .then((res) => {
           if(res.ok){
@@ -41,9 +43,6 @@ function Videos(){
         }})
 
     }
-
-
-    console.log(errors)
     return(
         <div className="mt-4"> 
         <Container>

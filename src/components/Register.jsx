@@ -50,12 +50,12 @@ export const Register = (props) => {
         <div className="auth-form-container">
           <h2>Register</h2>
         <form className="register-form" onSubmit={handleSumbit}>
-            <label form="username">Username</label>
-            <input value={formData.username} name="username" onChange={handleChange} id="username" placeholder="username"/>
-            <label form="email">email</label>
-            <input value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-            <label form="pasword">password</label>
-            <input value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
+            <label  className="label" form="username">Username</label>
+            <input className="input" value={formData.username} name="username" onChange={handleChange} id="username" placeholder="username"/>
+            <label className='label' form="email">email</label>
+            <input className="input" value={formData.email} onChange={handleChange} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+            <label className="label" form="pasword">password</label>
+            <input className="input" value={formData.password} onChange={handleChange}type="password" placeholder="*******" id="password" name="password" />
             <button className="login" type="submit">Register</button>
         </form>
         <p id="link-btn" ><Link to="/login">Already have an account?Login here</Link></p>
