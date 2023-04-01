@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart} from "@fortawesome/free-solid-svg-icons";
 import { isUserLoggedIn, getUser,getToken } from "./utils/auth";
+import { Link } from "react-router-dom";
 
 function Videos(){
     const [allVids,setAllVids] = useState([])
@@ -91,13 +92,13 @@ function Videos(){
                   <Card.Title>{vid.title}</Card.Title>
                   <Card.Text>{vid.description}</Card.Text>
                   <Button 
-                  variant="primary" 
+                  variant="outline-warning" 
                   className="me-2"
                   onClick={() => handleLike(vid.id)}
                   >
                     <FontAwesomeIcon icon={faHeart}>
                     {vid.likes} Likes </FontAwesomeIcon>Like {vid.likes}</Button>
-                  <Button variant="primary">Watch now</Button>
+                  <Link to={`/videos/${vid.id}`}><Button variant="outline-warning">Watch now</Button></Link>
                   {vid.error  && (
                     <div className="text-danger mt-3">
                       {errors.map((error, index) => (

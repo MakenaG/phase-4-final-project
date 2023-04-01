@@ -15,6 +15,7 @@ import { Register } from './components/Register';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/footer';
 import { AuthProvider } from 'react-auth-kit';
+import OneVid from './components/OneVid';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +34,8 @@ function App() {
         {/* <Profile/> */}
         <Routes>
           <Route path='/' element={<LandingPage/>}></Route>
-          <Route path='/videos' element={<Videos/>}></Route>
+          <Route exact path='/videos' element={<Videos/>}></Route>
+          <Route path='/videos/:id' element={<OneVid/>}></Route>
           <Route path='/login' element={<Login
            setIsLoggedIn={setIsLoggedIn}/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
