@@ -12,7 +12,7 @@ const saveUser = (uid) => {
   };
   
   const isUserLoggedIn = () => {
-    return !!getUser();
+    return !!getToken();
   };
   
   const storeToken = (token) => {
