@@ -1,5 +1,5 @@
 # Movie Webapp
-This is a movie web application built using React that displays a list of movies as well as allow them to browse through, allows users to upload movies, and add comments to them. It consumes the API provided by the Movie API backend to fetch movies as well as generate new ones.
+This movie web application is developed with React to showcase a list of movies, allowing users to browse through them, upload movies, and add comments. It retrieves data from the Movie API backend, which is built using Ruby.
 
 ## Features
 * Browse all movies
