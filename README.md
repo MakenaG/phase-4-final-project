@@ -1,4 +1,4 @@
-# Movie Webapp-
+# Movie Webapp
 This is a movie web application built using React that displays a list of movies as well as allow them to browse through, allows users to upload movies, and add comments to them. It consumes the API provided by the Movie API backend to fetch movies as well as generate new ones.
 
 ## Features
@@ -64,7 +64,7 @@ If you would like to contribute to this project, please follow the standard Gitf
 * Make your changes and commit them to your branch.
 * Create a pull request from your branch to the main repository.
 
-## License
+# License
 This project is licensed under the MIT License - 
 ```
 MIT License
