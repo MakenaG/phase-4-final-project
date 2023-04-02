@@ -139,6 +139,7 @@ function OneMovie(){
                 <FontAwesomeIcon icon={faHeart} /> {movie.likes}
             </Button>
             )}
+            
           </Col>
         </Row>
       </Container></div>
