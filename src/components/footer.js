@@ -7,7 +7,7 @@ function Footer(){
        <div className="con bg-warning">
         <br/>
         <center>
-        <ul className="mt-5">
+        <ul className="mt-10">
         <li className="list">
           <a
             href="https://www.linkedin.com/"
