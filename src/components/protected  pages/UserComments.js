@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+
 import { FaUser } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faFilm, faStar } from '@fortawesome/free-solid-svg-icons';
 import './UserComments.css';
 
 const UserComments = ({ movieId }) => {
@@ -44,8 +46,8 @@ const UserComments = ({ movieId }) => {
 
   return (
     <div className="user-comments">
-      <h2 className='comment-head'>
-        <FontAwesomeIcon icon={faComment} className="icon" />
+      <h2>
+        <FontAwesomeIcon icon={faFilm} className="icon" />
         Comments
       </h2>
       {comments.length === 0 ? (
@@ -59,6 +61,10 @@ const UserComments = ({ movieId }) => {
                 <FaUser className="icon" />
                 <em>{comment.user.username}</em>
               </p>
+              <div className="rating">
+                <FontAwesomeIcon icon={faStar} className="icon" />
+                <span>{comment.rating}/5</span>
+              </div>
             </li>
           ))}
         </ul>

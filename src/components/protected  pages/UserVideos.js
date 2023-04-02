@@ -11,7 +11,7 @@ const UserVideos = () => {
       try {
         const response = await fetch('https://backend-dc1w.onrender.com/videos', {
           headers: {
-             Authorization:`Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
           }
         });
