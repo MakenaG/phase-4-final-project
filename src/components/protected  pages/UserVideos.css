@@ -4,91 +4,91 @@
   align-items: center;
 }
 
-h2 {
+.vid-head {
   font-size: 2rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
-ul {
+.vid-li {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
-li {
-  margin: 1rem;
-  width: 300px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.vid-list {
+  border-radius: 10px;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.vid-list:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .video-thumbnail {
-  width: 100%;
-  height: 60%;
-  overflow: hidden;
   position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .video-details {
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 40%;
+  background-color: rgb(255, 187, 0);
+  transition: transform 0.3s ease;
 }
 
-h3 {
+.video-details h3 {
   font-size: 1.2rem;
+}
+
+.video-details p {
   margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .video-username {
-  font-size: 0.8rem;
-  margin: 0.5rem 0;
+  color: #888;
 }
 
 .video-description {
-  font-size: 0.9rem;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-button {
-  background-color: #f44336;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
   margin-top: 1rem;
-  cursor: pointer;
-  align-self: flex-end;
-  transition: background-color 0.2s;
 }
 
-button:hover {
-  background-color: #e53935;
+@media screen and (max-width: 768px) {
+  .vid-li {
+    grid-template-columns: 1fr;
+  }
 }
 
-button:disabled {
-  background-color: #bdbdbd;
-  cursor: not-allowed;
+.vid-list :hover .video-thumbnail img {
+  transform: scale(1.1);
+}
+
+.vid-list:hover .video-details {
+  transform: translateY(-10px);
+}
+
+.vid-list:hover .video-details h3,
+.vid-list:hover .video-details p {
+  color: #ff6f69;
 }
