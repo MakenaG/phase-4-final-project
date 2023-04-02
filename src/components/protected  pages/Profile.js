@@ -32,6 +32,13 @@ function Profile(){
         <div className="bg-warning"  id="VideoContainer">
              
             <div className="containera py-5">
+            {errors.length > 0 && (
+                <div className="text-danger">
+                    {errors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                    ))}
+                </div>
+                )}
             <div className="d-flex justify-content-end align-items-center mb-5">
                     <FontAwesomeIcon icon={faUser} className="mr-2" size="lg" />
                     <strong>{user.username}</strong>

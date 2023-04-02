@@ -23,7 +23,7 @@ function Videos(){
              setAllVids(updatedVids);
             })
           }else{
-            res.json().then((err)=>setErrors(err.errors))
+            res.json().then((err)=>setErrors([err.errors]))
           }
         })
     },[])
