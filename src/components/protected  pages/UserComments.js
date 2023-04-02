@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { getToken } from '../utils/auth';
 
 import { FaUser } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,12 +9,13 @@ import './UserComments.css';
 const UserComments = ({ movieId }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
+  let token = getToken()
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`/api/movies/${movieId}/comments`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        const response = await fetch(`https://backend-dc1w.onrender.com/users/reviews`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
         setComments(data);
@@ -23,18 +24,21 @@ const UserComments = ({ movieId }) => {
       }
     };
     fetchComments();
-  }, [movieId]);
-
+  }, [token]);
+  console.log(comments)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://backend-dc1w.onrender.com/api/movies/${movieId}/comments`, {
+      const response = await fetch(`https://backend-dc1w.onrender.com/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify({ content: newComment }),
+        body: JSON.stringify({
+           comment: newComment, 
+           movie_id: movieId
+          }),
       });
       const data = await response.json();
       setComments((prevComments) => [...prevComments, data]);
@@ -59,11 +63,11 @@ const UserComments = ({ movieId }) => {
               <p>{comment.content}</p>
               <p className="username">
                 <FaUser className="icon" />
-                <em>{comment.user.username}</em>
+                {/* <em>{comment.user.username}</em> */}
               </p>
               <div className="rating">
                 <FontAwesomeIcon icon={faStar} className="icon" />
-                <span>{comment.rating}/5</span>
+                {/* <span>{comment.rating}/5</span> */}
               </div>
             </li>
           ))}

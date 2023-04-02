@@ -71,6 +71,10 @@ function Videos(){
     }
     return(
         <div className="mt-4"> 
+        <center className="mb-3">
+          <h1>Our Videos</h1>
+          <strong>Where we interact through videos</strong>
+        </center>
         <Container>
         <Row>
           {allVids.map((vid) => (

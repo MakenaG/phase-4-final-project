@@ -36,7 +36,7 @@ const UploadVideo = ({ setVideos }) => {
       setDescription('');
   
       // Fetch new video list
-      const videoResponse = await fetch('', {
+      const videoResponse = await fetch('https://backend-dc1w.onrender.com/videos', {
         headers: {
           'Authorization': `Bearer ${localStorage?.getItem('token')}`,
           'Content-Type': 'application/json',

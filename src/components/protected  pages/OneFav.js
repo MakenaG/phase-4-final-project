@@ -2,55 +2,53 @@ import React,{useEffect,useState} from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { getUser,getToken } from "./utils/auth";
-import UserComments from "./protected  pages/UserComments";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { getUser,getToken } from "../utils/auth";
 
-function OneMovie(){
+function Fav(){
     const { id } = useParams();
-    const [movie,setMovie] = useState([])
+    const [fav,setFav] = useState([])
     const [errors,setErrors] = useState([])
-    const [isFavorite,setIsFavorite] = useState(false);
     const userId = getUser()
     const token = getToken()
 
     useEffect(()=>{
-        fetch(`https://backend-dc1w.onrender.com/movies/${id}`)
+        fetch(`https://backend-dc1w.onrender.com/favorites/${id}`,{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then(res =>{
           if(res.ok){
             res.json().then((data)=>{
-              setMovie(data)
+              setFav(data.movie)
               
             })
           }else{
             res.json().then((err)=>setErrors([err.errors]))
           }
         })
-    },[id])
-
-    const handleAddFavorite = () => {
-        const requestBody = {
-            user_id: userId, // replace with actual user id
-            movie_id: movie.id
-        };
-    
-        fetch('https://backend-dc1w.onrender.com/favorites', {
-            method: 'POST',
+    },[id,token])
+   console.log(fav)
+    const handleDeleteFavorite = () => {
+        fetch(`https://backend-dc1w.onrender.com/favorites/${id}`, {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(requestBody)
+            // body: JSON.stringify(requestBody)
         })
         .then(res => {
             if (res.ok) {
-                setIsFavorite(true);
+                setFav(prevFavorites => prevFavorites.filter(favorite => favorite.id !== id));
+
             } else {
                 res.json().then((err) => setErrors([err.errors]));
             }
         });
     };
-    console.log(errors)
+    console.log(fav.id)
     return(
         <div><Container fluid className="my-4">
         {errors.length > 0 && (
@@ -63,8 +61,8 @@ function OneMovie(){
         <Row>
           <Col lg={4} md={12}>
             <img
-              src={movie.image_src}
-              alt={movie.title}
+              src={fav.image_src}
+              alt={fav.title}
               className="img-fluid w-100 h-300 img"
             />
           </Col>
@@ -74,7 +72,7 @@ function OneMovie(){
                 Title:
               </Col>
               <Col lg={10} md={10} style={{ fontSize: "2rem" }}>
-                {movie.title}
+                {fav.title}
               </Col>
             </Row>
 
@@ -83,7 +81,7 @@ function OneMovie(){
                 Description:
               </Col>
               <Col lg={10} md={10}>
-                {movie.description}
+                {fav.description}
               </Col>
             </Row>
 
@@ -92,7 +90,7 @@ function OneMovie(){
                 Release Date:
               </Col>
               <Col lg={10} md={10}>
-                {movie.release_date}
+                {fav.release_date}
               </Col>
             </Row>
 
@@ -101,7 +99,7 @@ function OneMovie(){
                 Runtime:
               </Col>
               <Col lg={10} md={10}>
-                {movie.runtime}
+                {fav.runtime}
               </Col>
             </Row>
 
@@ -110,7 +108,7 @@ function OneMovie(){
                 Directors:
               </Col>
               <Col lg={10} md={10}>
-                {movie.director}
+                {fav.director}
               </Col>
             </Row>
 
@@ -119,7 +117,7 @@ function OneMovie(){
                 Cast:
               </Col>
               <Col lg={10} md={10}>
-                {movie.cast}
+                {fav.cast}
               </Col>
             </Row>
           </Col>
@@ -128,25 +126,19 @@ function OneMovie(){
                 <Col lg={8} md={12} className="mx-auto text-center">
             <div className="ratio ratio-16x9">
               <iframe
-                src={movie.video}
-                title={movie.title}
+                src={fav.video}
+                title={fav.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
-            {isFavorite ? (
-            <p>This movie is already in your favorites list!</p>
-            ) : (
-            <Button variant="outline-warning" onClick={handleAddFavorite}>
-                <FontAwesomeIcon icon={faHeart} /> {movie.likes}
+            <Button variant="outline-dark" onClick={handleDeleteFavorite}>
+                <FontAwesomeIcon icon={faTrash} /> 
             </Button>
-            )}
-            <UserComments
-            movieId={movie.id}/>
           </Col>
         </Row>
       </Container></div>
     )
 }
 
-export default OneMovie
+export default Fav

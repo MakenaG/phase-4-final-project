@@ -14,6 +14,7 @@ import { Register } from './components/Register';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Footer from './components/footer';
 import { AuthProvider } from 'react-auth-kit';
+import Fav from './components/protected  pages/OneFav';
 import OneVid from './components/OneVid';
 import OneMovie from './components/oneMovie';
 import SideBar from './components/protected  pages/SideBar';
@@ -65,7 +66,8 @@ function App() {
           <Route path='/usercomments' element={<UserComments/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/uservideos' element={<UserVideos/>}></Route> */}
-          <Route path="/favevids" element={renderComponentWithSidebar(FaveVids)} />
+          <Route path="/favorites/:id" element={renderComponentWithSidebar(Fav)} />
+          <Route exact path="/favorites" element={renderComponentWithSidebar(FaveVids)} />
           <Route path="/usercomments" element={renderComponentWithSidebar(UserComments)} />
           <Route path="/profile" element={renderComponentWithSidebar(Profile)} />
           <Route path="/uservideos" element={renderComponentWithSidebar(UserVideos)} />

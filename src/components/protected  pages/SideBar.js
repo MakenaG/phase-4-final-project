@@ -42,7 +42,7 @@ function SideBar(){
         <Link to="/uservideos">
         <li className="side">VIDEOS</li>
         </Link>
-        <Link to="/favevids">
+        <Link to="/favorites">
         <li className="side">FAVORITES</li>
         </Link>
         <Link to="/usercomments">

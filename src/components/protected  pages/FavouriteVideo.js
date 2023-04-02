@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getToken } from '../utils/auth';
 
 function FaveVids(){
-    const [films, setFilms] = useState([]);
+    const [favs, setFavs] = useState([]);
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(false);
     let navigate = useNavigate()
@@ -21,19 +21,20 @@ function FaveVids(){
         .then((res) => {
           if(res.ok){
             res.json().then((data)=>{
-              setFilms(data)
+              setFavs(data)
             })
           }else{
             res.json().then((err)=>setErrors([err.errors]))
           }
           setLoading(false)
         })
-    },[setLoading, setFilms, setErrors,token])
+    },[setLoading, setFavs, setErrors,token])
     
-    function handleMovie(film){
-      navigate(`/favorites/${film.id}`)
+    function handleMovie(id){
+      navigate(`/favorites/${id}`)
+      console.log(id)
     }
-    console.log(errors)
+    // console.log(errors)
     return (
         <div className="bg-warning" id="VideoContainer">
             <div className="container">
@@ -54,13 +55,17 @@ function FaveVids(){
                         </div> ): (
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/* where the movie cards will go :) */}
-                        {films.map(film => (
-                        <div className="col" key={film.id}>
-                            <div className="card mb-3" onClick={()=>handleMovie(film)}>
-                                <img src={film.image_src} className="card-img-top" alt={film.title}/>
-                            </div>
-                        </div>
-                           ))}
+                              {favs.length > 0 ? (
+                                favs.map(film => (
+                                <div className="col" key={film.id}>
+                                    <div className="card mb-3" onClick={()=>handleMovie(film.id)}>
+                                    <img src={film.movie.image_src} className="card-img-top" alt={film.movie.title}/>
+                                    </div>
+                                </div>
+                                ))
+                            ) : (
+                                <p>You haven't added anything to favorites yet.</p>
+                            )}
                     </div>
                         )}
                 </div>
