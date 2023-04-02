@@ -11,3 +11,9 @@
 #VideoContainer {
     height: 1000px
 }
+
+#NavItems ul {
+    display: flex;
+    
+}
+

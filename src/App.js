@@ -8,6 +8,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Videos from './components/Videos';
 import Navbar from './components/Navbar';
+
 import Profile from './components/protected  pages/Profile';
 import FaveVids from './components/protected  pages/FavouriteVideo';
 import LandingPage from './components/LandingPage';
@@ -15,11 +16,13 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 
-
+import Movies from './components/Movies';
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login')
-
+  return (
+    <div className="App">
+      <Navbar/>
+      <Movies/>
   const toggleForm = (formName) => {
     setCurrentForm(formName)
   }
