@@ -51,3 +51,7 @@
   color: yellow;
   text-decoration: underline;
 }
+#vids-con{
+  margin-bottom: 0;
+  background-image: linear-gradient(to bottom, #fffff5, #faf7da, #f8edbe, #f8e3a2, #fad887, #fbd276, #fdcc65, #ffc654, #ffc447, #ffc237, #ffc124, #ffbf00);
+}

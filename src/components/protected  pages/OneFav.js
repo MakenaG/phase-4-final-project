@@ -129,6 +129,8 @@ function Fav(){
             </Row>
           </Col>
             </Row>
+            <div style={{marginTop: "50px"}}>
+              <center><h3>Trailer</h3></center>
             <Row>
                 <Col lg={8} md={12} className="mx-auto text-center">
             <div className="ratio ratio-16x9">
@@ -144,6 +146,7 @@ function Fav(){
             </Button>
           </Col>
         </Row>
+        </div>
       </Container></div>
     )
 }

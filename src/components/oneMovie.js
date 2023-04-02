@@ -52,7 +52,8 @@ function OneMovie(){
     };
     console.log(errors)
     return(
-        <div><Container fluid className="my-4">
+        <div id="vids-con">
+          <Container fluid className="my-4">
         {errors.length > 0 && (
           <div className="text-danger">
             {errors.map((error, index) => (
@@ -124,6 +125,8 @@ function OneMovie(){
             </Row>
           </Col>
             </Row>
+            <div style={{marginTop: "50px"}}>
+              <center><h3>Trailer</h3></center>
             <Row>
                 <Col lg={8} md={12} className="mx-auto text-center">
             <div className="ratio ratio-16x9">
@@ -137,7 +140,7 @@ function OneMovie(){
             {isFavorite ? (
             <p>This movie is already in your favorites list!</p>
             ) : (
-            <Button variant="outline-warning" onClick={handleAddFavorite}>
+            <Button variant="outline-dark" onClick={handleAddFavorite}>
                 <FontAwesomeIcon icon={faHeart} /> {movie.likes}
             </Button>
             )}
@@ -145,6 +148,7 @@ function OneMovie(){
             movieId={movie.id}/>
           </Col>
         </Row>
+        </div>
       </Container></div>
     )
 }
