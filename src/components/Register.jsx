@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import { useNavigate,Link } from "react-router-dom";
 
 export const Register = (props) => {
@@ -18,11 +18,9 @@ export const Register = (props) => {
       }
     let navigate = useNavigate();
     
-    useEffect(() => {
-      console.log(loading);
-    }, [loading])
     const handleSumbit = (e) => {
         e.preventDefault()
+        setLoading(true)
         fetch('https://backend-dc1w.onrender.com/users', {
           method: 'POST',
           headers: {

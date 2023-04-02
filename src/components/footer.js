@@ -4,9 +4,10 @@ import {faLinkedin,faGithub,faTwitter,faInstagram} from '@fortawesome/free-brand
 import './footer.css'
 function Footer(){
     return(
-       <div className="con">
+       <div className="con bg-warning">
+        <br/>
         <center>
-        <ul>
+        <ul className="mt-5">
         <li className="list">
           <a
             href="https://www.linkedin.com/"

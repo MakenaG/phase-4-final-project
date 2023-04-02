@@ -35,18 +35,18 @@ function SideBar(){
       </div>
     </div> */}
           <div className="sidebar">
-      <ul>
+      <ul className="side-ul">
         <Link to="/profile">
-            <div> Profile</div>
+            <li className="side"> PROFILE</li>
         </Link>
         <Link to="/uservideos">
-        <div>Videos</div>
+        <li className="side">VIDEOS</li>
         </Link>
         <Link to="/favevides">
-        <div>Favorites</div>
+        <li className="side">FAVORITES</li>
         </Link>
         <Link to="/usercomments">
-        <div>Comments </div>
+        <li className="side">COMMENTS </li>
         </Link>
       </ul>
     </div>

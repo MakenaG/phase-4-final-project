@@ -6,7 +6,7 @@ import { removeUser, removeUserToken, getToken} from "./utils/auth";
 
 function Navbar({isLoggedIn,setIsLoggedIn}){
   let navigate = useNavigate();
-  const token = getToken()
+  let token = getToken()
   
   function handleLogout() {
     fetch("https://backend-dc1w.onrender.com/users/logout", {
@@ -15,21 +15,25 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
       removeUser();
       removeUserToken();
       setIsLoggedIn(false);
+      token = null
     })
-      
+      // token = null
   }
   function handleLogin() {
-
+      if(token !== null){
       setIsLoggedIn(true)
       navigate("/profile");
+      }
   }
   function handleLoginProfile() {
-    if (isLoggedIn && token) {
-      navigate("/profile");
-    } else {
+    if (isLoggedIn === false && token === null) {
       navigate("/login");
+    } else {
+      navigate("/profile");
     }
   }
+  console.log(isLoggedIn)
+  console.log(token)
     return(
         <div>
             {/* <nav className="navbar bg-dark" >
@@ -70,19 +74,19 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
                   Videos
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/profile" onClick={handleLoginProfile}>
+              <li className="nav-item" onClick={handleLoginProfile}>
+                <Link className="nav-link" to="/profile" >
                   Profile
                 </Link>
               </li>
               <li className="nav-item">
-              {isLoggedIn?(
-                <Link className="nav-link" to="/login" onClick={handleLogout}>
-                  Log out 
+              {!isLoggedIn?(
+                <Link className="nav-link" to="/login" onClick={handleLogin}>
+                  Login 
                 </Link>
               ):(
-                <Link className="nav-link" to="/profile" onClick={handleLogin}>
-                  Login
+                <Link className="nav-link" to="/profile" onClick={handleLogout}>
+                  Log out
                 </Link>
               )}
               </li>
