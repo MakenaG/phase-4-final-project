@@ -28,7 +28,7 @@ const UserComments = ({ movieId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/movies/${movieId}/comments`, {
+      const response = await fetch(`https://backend-dc1w.onrender.com/api/movies/${movieId}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ const UserComments = ({ movieId }) => {
       {comments.length === 0 ? (
         <p>No comments yet.</p>
       ) : (
-        <ul>
+        <ul className='comm-ul'>
           {comments.map((comment) => (
-            <li key={comment.id}>
+            <li className='comm-list' key={comment.id}>
               <p>{comment.content}</p>
               <p className="username">
                 <FaUser className="icon" />

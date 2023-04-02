@@ -1,184 +1,94 @@
 .videos-container {
-  background-color: #1c1c1c;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
 }
 
-.videos-container h2 {
-  color: #f5c518;
-  font-weight: bold;
-  font-size: 36px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px #000000;
+h2 {
+  font-size: 2rem;
+  margin: 2rem 0;
 }
 
-.videos-container p {
-  font-size: 1.5rem;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.videos-container ul {
-  list-style-type: none;
-  padding: 0;
+ul {
+  list-style: none;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 2rem;
-}
-
-.videos-container li {
-  background-color: #2d2d2d;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
-  position: relative;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.videos-container li:last-child {
-  margin-bottom: 0;
+li {
+  margin: 1rem;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .video-thumbnail {
-  width: 200px;
-  height: 120px;
-  margin-right: 20px;
+  width: 100%;
+  height: 60%;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .video-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.2s ease-in-out;
-}
-
-.video-thumbnail:hover img {
-  transform: scale(1.1);
 }
 
 .video-details {
-  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
 }
 
-.video-details h3 {
-  color: #f5c518;
-  font-size: 24px;
-  margin: 0 0 10px 0;
-  text-shadow: 2px 2px #000000;
-}
-
-.video-details p {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.video-details button {
-  background-color: #ff0066;
-  color: #fff;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.video-details button:hover {
-  background-color: #e6005c;
-}
-
-@media (max-width: 600px) {
-  ul {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
-
-@media (max-width: 400px) {
-  .video-details h3 {
-    font-size: 1.2rem;
-  }
-
-  .video-details p {
-    font-size: 0.8rem;
-  }
+h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .video-username {
-  color: #ffffff;
-  font-size: 18px;
-  margin: 0 0 5px 0;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
 }
 
 .video-description {
-  color: #cccccc;
-  font-size: 16px;
+  font-size: 0.9rem;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
-.video-delete {
-  background-color: #f5c518;
-  color: #1c1c1c;
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 5px;
+button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  margin-top: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  align-self: flex-end;
+  transition: background-color 0.2s;
 }
 
-.video-delete:hover {
-  background-color: #e0b216;
+button:hover {
+  background-color: #e53935;
 }
 
-.movie-icon {
-  font-size: 24px;
-  color: #f5c518;
-  margin-right: 10px;
-}
-
-.movie-icon:hover {
-  color: #e0b216;
-}
-
-.movie-background {
-  /* background-image: url('/images/movie-theater.jpg'); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-
-.movie-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.movie-title {
-  color: #f5c518;
-  font-size: 48px;
-  margin: 0 0 20px 0;
-  text-shadow: 2px 2px #000000;
-}
-
-.movie-subtitle {
-  color: #ffffff;
-  font-size: 24px;
-  margin: 0 0 40px 0;
-  text-shadow: 2
+button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
 }

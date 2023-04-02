@@ -1,17 +1,18 @@
-import UserVideos from './components/protected-pages/UserVideos'
-// import UserComments from './components/protected  pages/UserComments';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Videos from './components/Videos';
+import UserVideos from './components/protected  pages/UserVideos';
+import UserComments from './components/protected  pages/UserComments';
+ import UploadVideo from './components/protected  pages/UploadVideo';
+// import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Videos from './components/Videos';
 import Navbar from './components/Navbar';
-import LandingPage from './components/LandingPage';
+// import LandingPage from './components/LandingPage';
 
 
 function App() {
   return (
     <div className="App">
       <Navbar/>
-      <LandingPage/>
+      {/* <LandingPage/> */}
       <UploadVideo />
       <UserVideos/>
       <UserComments/>
