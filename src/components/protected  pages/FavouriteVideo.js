@@ -1,27 +1,68 @@
-import React from "react";
 import '../Extra.css'
-
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getToken } from '../utils/auth';
 
 function FaveVids(){
+    const [films, setFilms] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const [loading, setLoading] = useState(false);
+    let navigate = useNavigate()
+    
+    let token = getToken()
+    useEffect(() => {
+      setLoading(true)  
+      // Fetch films data and update state
+      fetch("https://backend-dc1w.onrender.com/favorites",{
+        headers: {
+            Authorization: `Bearer ${token}`
+          }
+      })
+        .then((res) => {
+          if(res.ok){
+            res.json().then((data)=>{
+              setFilms(data)
+            })
+          }else{
+            res.json().then((err)=>setErrors([err.errors]))
+          }
+          setLoading(false)
+        })
+    },[setLoading, setFilms, setErrors,token])
+    
+    function handleMovie(film){
+      navigate(`/favorites/${film.id}`)
+    }
+    console.log(errors)
     return (
         <div className="bg-warning" id="VideoContainer">
             <div className="container">
                 <h1>MyFavourites</h1>
             </div>
             <br/><br/>
+            {errors.length > 0 && (
+                <div className="text-danger">
+                {errors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                ))}
+                </div>
+            )}
                 <div className="container">
+                { loading ? (<div className="d-flex align-items-center">
+                                        <strong>Please Wait...</strong>
+                        <div className="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                        </div> ): (
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/* where the movie cards will go :) */}
-                        <div className="col">
-                            <div className="card mb-3">
-                                <img src="..." className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">Movie title</h5>
-                                    <p className="card-text">Movie Description :V</p>
-                                </div>
+                        {films.map(film => (
+                        <div className="col" key={film.id}>
+                            <div className="card mb-3" onClick={()=>handleMovie(film)}>
+                                <img src={film.image_src} className="card-img-top" alt={film.title}/>
                             </div>
                         </div>
+                           ))}
                     </div>
+                        )}
                 </div>
         </div>
     )

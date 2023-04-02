@@ -22,7 +22,7 @@ function OneMovie(){
               
             })
           }else{
-            res.json().then((err)=>setErrors(err.errors))
+            res.json().then((err)=>setErrors([err.errors]))
           }
         })
     },[id])
@@ -45,7 +45,7 @@ function OneMovie(){
             if (res.ok) {
                 setIsFavorite(true);
             } else {
-                res.json().then((err) => console.log(err));
+                res.json().then((err) => setErrors([err.errors]));
             }
         });
     };

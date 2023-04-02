@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Videos from './components/Videos';
 import Navbar from './components/Navbar';
 import Profile from './components/protected  pages/Profile';
-import FaveVids from './components/protected  pages/FavouriteVideo';
+import FaveVids from './components/protected  pages/FavouriteVideo'
 import LandingPage from './components/LandingPage';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
