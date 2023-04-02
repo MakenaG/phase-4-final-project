@@ -17,7 +17,7 @@ const UploadVideo = ({ setVideos }) => {
 
     try {
       setIsUploading(true);
-      const response = await fetch('', {
+      const response = await fetch('https://backend-dc1w.onrender.com/videos', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -56,10 +56,9 @@ const UploadVideo = ({ setVideos }) => {
   };
 
   return (
-    <div className="upload-header">
-  <h2>Upload Video</h2>
-  <div className="upload-icon"></div>
-      <form onSubmit={handleSubmit}>
+    <div className='upload-form'>
+      <h2>Upload Video</h2>
+      <form onSubmit={handleSubmit} >
         <div>
           <label htmlFor="title">Title:</label>
           <input
