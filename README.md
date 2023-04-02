@@ -1,4 +1,4 @@
-# Movie Webapp
+# KenyaFlix
 This movie web application is developed with React to showcase a list of movies, allowing users to browse through them, upload movies, and add comments. It retrieves data from the Movie API backend, which is built using Ruby.
 
 ## Features
