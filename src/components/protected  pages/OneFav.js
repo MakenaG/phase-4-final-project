@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { getUser,getToken } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 
 function Fav(){
     const { id } = useParams();
@@ -11,7 +12,7 @@ function Fav(){
     const [errors,setErrors] = useState([])
     const userId = getUser()
     const token = getToken()
-
+    let navigate = useNavigate()
     useEffect(()=>{
         fetch(`https://backend-dc1w.onrender.com/favorites/${id}`,{
           headers: {
@@ -41,11 +42,17 @@ function Fav(){
         })
         .then(res => {
             if (res.ok) {
-                setFav(prevFavorites => prevFavorites.filter(favorite => favorite.id !== id));
-
+              setFav(prevFavorites => {
+                if (Array.isArray(prevFavorites)) {
+                    return prevFavorites.filter(favorite => favorite.id !== id);
+                } else {
+                    return [];
+                }
+            });    
             } else {
                 res.json().then((err) => setErrors([err.errors]));
             }
+            navigate('/favorites')
         });
     };
     console.log(fav.id)
