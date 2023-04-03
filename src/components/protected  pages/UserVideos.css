@@ -60,7 +60,7 @@
   line-height: 1.2;
 }
 
-button {
+.video-button {
   background-color: #f94144;
   color: white;
   border: none;
@@ -71,7 +71,7 @@ button {
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+.video-button:hover {
   background-color: #ff5055;
 }
 

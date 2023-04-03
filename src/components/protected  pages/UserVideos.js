@@ -98,8 +98,8 @@ const UserVideos = () => {
                   />
                 </h4>
                 <p>{video.owner}</p>
-                <button onClick={() => handleDelete(video.id)}>Delete</button>
-                <button onClick={() => handleUpdate(video.id)}>Update</button>
+                <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
+                <button className='video-button' onClick={() => handleUpdate(video.id)}>Update</button>
               </div>
             </div>
           </li>

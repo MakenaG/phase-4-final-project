@@ -23,7 +23,7 @@ function Videos(){
              setAllVids(updatedVids);
             })
           }else{
-            res.json().then((err)=>setErrors(err.errors))
+            res.json().then((err)=>setErrors([err.errors]))
           }
         })
     },[])
@@ -70,7 +70,11 @@ function Videos(){
 
     }
     return(
-        <div className="mt-4"> 
+        <div className="mt-4" id="vids-con"> 
+        <center className="mb-3">
+          <h1>Our Videos</h1>
+          <strong>Where we interact through videos</strong>
+        </center>
         <Container>
         <Row>
           {allVids.map((vid) => (

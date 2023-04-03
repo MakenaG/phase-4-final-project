@@ -22,7 +22,7 @@ function LandingPage() {
             setFilms(data)
           })
         }else{
-          res.json().then((err)=>setErrors(err.errors))
+          res.json().then((err)=>setErrors([err.errors]))
         }
         setLoading(false)
       })

@@ -38,7 +38,7 @@ export const Login = ({setIsLoggedIn}) => {
             // setIsLoggedIn(true);
             // navigate("/profile");
           } else {
-            response.json().then((err)=>setErrors(err.errors))
+            response.json().then((err)=>setErrors([err.errors]))
           }
           setLoading(false)
         })
@@ -51,6 +51,7 @@ export const Login = ({setIsLoggedIn}) => {
         })
        ;   
     }
+    console.log(errors)
     return(
         <div className="form">
         <div className="auth-form-container">
