@@ -40,7 +40,10 @@ function Reviews({ movieId }) {
         "Content-Type": "application/json",
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify(newReview),
+      body: JSON.stringify({
+        comment: newReview.comment,
+        movie_id: movieId
+    }),
     })
       .then((res) => res.json())
       .then((data) => {
