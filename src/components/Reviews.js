@@ -108,16 +108,13 @@ function Reviews({ movieId }) {
   if (error) {
     return <div>Error loading reviews: {error}</div>;
   }
-  console.log(reviews.user_id)
   return (
     <div className="reviews-container">
     {reviews.map((review) => (
       <div key={review.id} className="review">
         <div className="user">
           <FontAwesomeIcon icon={faUser} />
-          {review.user ? <h4>{review.user.name}</h4> : null}
-
-          {/* <h4>{.user.username}</h4> */}
+          {review.user ? <h4>{review.user.username}</h4> : null}
         </div>
         {editMode[review.id] ? (
           <>
