@@ -145,9 +145,7 @@ function OneMovie(){
                 <FontAwesomeIcon icon={faHeart} /> {movie.likes}
             </Button>
             )}
-            {/* <UserComments
-            movieId={movie.id}/> */}
-            <Reviews
+
             movieId={movie.id}/>
           </Col>
         </Row>
