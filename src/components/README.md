@@ -1,3 +1,7 @@
+
+![forProject](https://user-images.githubusercontent.com/117739561/229472245-74faf4b0-5893-43c2-9ab8-6bfe6085d696.gif)
+
+
 # Our Project
 This phase, our group decided to work on a movie website. We had asimple concept, to create a page where users can watch movies or videos and be capable of interacting with them. 
 
