@@ -1,0 +1,40 @@
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background-color: rgb(255, 240, 240);
+    border-radius: 5px;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .comment {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .comment-input {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }

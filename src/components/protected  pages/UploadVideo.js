@@ -8,13 +8,17 @@ const UploadVideo = ({ setVideos }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
 
+  const handleUploadProgress = (progressEvent) => {
+    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+    setUploadProgress(progress);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('video', video);
     formData.append('title', title);
     formData.append('description', description);
-
     try {
       setIsUploading(true);
       const response = await fetch('https://backend-dc1w.onrender.com/videos', {
@@ -23,10 +27,7 @@ const UploadVideo = ({ setVideos }) => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: formData,
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-          setUploadProgress(progress);
-        }
+        onUploadProgress: handleUploadProgress
       });
       const data = await response.json();
       console.log(data);
@@ -34,7 +35,7 @@ const UploadVideo = ({ setVideos }) => {
       setVideo(null);
       setTitle('');
       setDescription('');
-  
+
       // Fetch new video list
       const videoResponse = await fetch('https://backend-dc1w.onrender.com/videos', {
         headers: {
@@ -58,7 +59,7 @@ const UploadVideo = ({ setVideos }) => {
   return (
     <div className='upload-form'>
       <h2>Upload Video</h2>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
           <input
@@ -92,6 +93,14 @@ const UploadVideo = ({ setVideos }) => {
           {isUploading ? `Uploading...${uploadProgress}%` : 'Upload'}
         </button>
       </form>
+      {video && (
+        <div>
+          <video controls>
+            <source src={URL.createObjectURL(video)} type={video.type} />
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+      )}
     </div>
   );
 };
