@@ -35,6 +35,15 @@ To upload a new movie, click on the "Upload Video" button in the navigation bar.
 ### Adding comments
 To add a comment to a movie, navigate to the movie's detail page by clicking on its image. Scroll down to the comments section and enter your comment in the input field. Once you submit the comment, it will be added to the list of comments displayed on the page.
 
+### Restrictions
+ A user needs to be logged in to:
+ * add a favorite movie.
+ * access the profile page.
+ * add a like to a video.
+ * add edit or delete a comment to a movie
+ * upload, edit or delete a video
+
+
 # Links
 [Backend Repository](https://github.com/Black-Male/Phase-4-project-backend)
 
