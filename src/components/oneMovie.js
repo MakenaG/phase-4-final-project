@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Reviews from "./Reviews";
 import { getUser,getToken } from "./utils/auth";
 import UserComments from "./protected  pages/UserComments";
 
@@ -144,7 +145,9 @@ function OneMovie(){
                 <FontAwesomeIcon icon={faHeart} /> {movie.likes}
             </Button>
             )}
-            <UserComments
+            {/* <UserComments
+            movieId={movie.id}/> */}
+            <Reviews
             movieId={movie.id}/>
           </Col>
         </Row>
