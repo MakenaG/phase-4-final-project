@@ -2,10 +2,15 @@
 This movie web application is developed with React to showcase a list of movies, allowing users to browse through them, upload movies, and add comments. It retrieves data from the Movie API backend, which is built using Ruby.
 
 ## Features
+* User registeration
+* User Login
 * Browse all movies
-* Create new movies
-* Delete your movies
-* Update them
+* Upload new movies
+* Update movie description
+* Delete your movie
+* Add & update Comments 
+* Add Favorite movie
+
 
 # Usage
 ### Viewing movies
