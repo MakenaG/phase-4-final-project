@@ -1,3 +1,6 @@
+![forProject](https://user-images.githubusercontent.com/117739561/229472551-ce54f427-d321-4531-8ae8-8bddaee63c45.gif)
+
+
 # KenyaFlix
 This movie web application is developed with React to showcase a list of movies, allowing users to browse through them, upload movies, and add comments. It retrieves data from the Movie API backend, which is built using Ruby.
 
