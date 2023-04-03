@@ -5,22 +5,35 @@ This movie web application is developed with React to showcase a list of movies,
 * User registeration
 * User Login
 * Browse all movies
-* Upload new movies
-* Update movie description
-* Delete your movie
-* Add & update Comments 
-* Add Favorite movie
+* Upload new videos
+* Update video description
+* Delete video movie
+* Add, update and delete Comments 
+* Add Favorite movie 
+* Delete a favorite movie
 
 
 # Usage
 ### Viewing movies
 The main page of the application displays a list of movies retrieved from the Ruby API backend. You can scroll through the list and click on any movie to view its details.
 
-### Uploading movies
-To upload a new movie, click on the "Upload Movie" button in the navigation bar. You will be redirected to a form where you can enter the details of the movie, including its title, director, release date, and description. Once you submit the form, the movie will be added to the list of movies displayed on the main page.
+
+### View one movie and adding to Favorites
+Click on a movie image to go to the page for that specific movie and watch its trailer.Add a movie to your favorites by clicking on the like button on the movie page.
+
+
+### Favorites page
+On the favorites you will find a list of all the favorite movies you have added.
+If you click on the movie image, you will be redirected to the movie itself where you can watch.
+On the favorite page, below the trailer there is a delete button that will delete the movie from the favorites list
+
+
+### Uploading videos
+To upload a new movie, click on the "Upload Video" button in the navigation bar. You will be redirected to a form where you can enter the details of the movie, including its title, director, release date, and description. Once you submit the form, the movie will be added to the list of movies displayed on the main page.
+
 
 ### Adding comments
-To add a comment to a movie, navigate to the movie's detail page by clicking on its title. Scroll down to the comments section and enter your comment in the input field. Once you submit the comment, it will be added to the list of comments displayed on the page.
+To add a comment to a movie, navigate to the movie's detail page by clicking on its image. Scroll down to the comments section and enter your comment in the input field. Once you submit the comment, it will be added to the list of comments displayed on the page.
 
 # Links
 [Backend Repository](https://github.com/Black-Male/Phase-4-project-backend)
