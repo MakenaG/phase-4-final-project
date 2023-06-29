@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import './UserVideos.css';
 import UploadVideo from './UploadVideo';
-import UserComments from './UserComments';
+import { getToken } from '../utils/auth';
 
 const UserVideos = () => {
   const [videos, setVideos] = useState([]);
   const [errors, setErrors] = useState([]);
   const [description, setDescription] = useState('');
-
+   let token = getToken()
   // Define a common function to fetch videos
-  const fetchVideos = async (url) => {
-    try {
-      const response = await fetch(url, {
+  // const fetchVideos = async () => {
+  //   try {
+  //     const response = await fetch('https://backend-dc1w.onrender.com/videos', {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     });
+  //     const data = await response.json();
+  //     setVideos(data || []);
+  //   } catch (error) {
+  //     setErrors(error);
+  //   }
+  // };
+
+     useEffect(() => {
+      // Fetch films data and update state
+      fetch("https://backend-dc1w.onrender.com/videos",{
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json'
-        }
-      });
-      const data = await response.json();
-      setVideos(data || []);
-    } catch (error) {
-      setErrors(error);
-    }
-  };
-
-  // Fetch all videos on initial render
-  useEffect(() => {
-    fetchVideos('https://backend-dc1w.onrender.com/videos');
-  }, []);
-
-  // Fetch user videos when videos state changes
-  useEffect(() => {
-    fetchVideos('https://backend-dc1w.onrender.com/videos');
-  }, [videos]);
+            Authorization: `Bearer ${token}`
+          }
+      })
+        .then((res) => {
+          if(res.ok){
+            res.json().then((data)=>{
+              setVideos(data)
+            })
+          }else{
+            res.json().then((err)=>setErrors([err.errors]))
+          }
+        })
+    },[setVideos, setErrors,token])
 
   // Delete a video by id
   const handleDelete = async (id) => {
@@ -66,13 +74,14 @@ const UserVideos = () => {
       });
 
       if (response.ok) {
-        fetchVideos('https://backend-dc1w.onrender.com/videos');
+        setDescription('')
+        // fetchVideos('https://backend-dc1w.onrender.com/videos');
       }
     } catch (error) {
       console.error(error);
     }
   };
-
+// console.log(videos)
   // Render the videos list and upload component
   return (
     <div className="videos-container">
@@ -82,12 +91,23 @@ const UserVideos = () => {
         {videos.map((video) => (
           <li className="vid-list" key={video.id}>
             <div className="vid-item">
-              <iframe
-                src={`https://www.youtube.com/embed/Nv2ZM6zE3zw`}
+              {/* <video
+                src={video.video}
                 title={video.title}
                 description={video.description}
-              ></iframe>
-              
+              ></video> */}
+              <iframe
+              src={video.video}
+              title={video.title}
+              description={video.description}
+              autoPlay
+              muted
+              loop
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <h4>Description</h4>
+              <p>{video.description}</p>
               <div className="vid-info">
                 <h4>
                   <input

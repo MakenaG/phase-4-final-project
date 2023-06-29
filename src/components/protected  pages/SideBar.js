@@ -15,9 +15,9 @@ function SideBar(){
         <Link to="/favorites">
         <li className="side">FAVORITES</li>
         </Link>
-        <Link to="/usercomments">
+        {/* <Link to="/usercomments">
         <li className="side">COMMENTS </li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
         </div>

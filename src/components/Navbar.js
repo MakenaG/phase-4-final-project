@@ -9,14 +9,14 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
   let token = getToken()
   
   function handleLogout() {
-    fetch("https://backend-dc1w.onrender.com/users/logout", {
+fetch("https://backend-dc1w.onrender.com/users/logout", {
       method: "DELETE",
     }).then(() => {
       removeUser();
       removeUserToken();
       setIsLoggedIn(false);
       token = null
-    })
+    })    
       // token = null
   }
   function handleLogin() {
@@ -36,21 +36,11 @@ function Navbar({isLoggedIn,setIsLoggedIn}){
   console.log(token)
     return(
         <div>
-            {/* <nav className="navbar bg-dark" >
-                <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1 text-bg-dark">KenyaFlix</span>
-                    <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-warning" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav> */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-         {/* <img src={logo} alt="logo" style={{ width: "100px", height: "100%", position: "absolute", top: 0, left: 0 }} /> */}
-          <Link className="navbar-brand" href="#">
-            KenyaFlix
-          </Link>
+            <div className="container-fluid">
+            <Link className="navbar-brand" href="#">
+              KenyaFlix
+            </Link>
           <button
             className="navbar-toggler"
             type="button"

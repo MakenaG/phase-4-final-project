@@ -1,59 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './UploadVideo.css';
+import { getToken } from '../utils/auth';
 
 const UploadVideo = ({ setVideos }) => {
   const [video, setVideo] = useState(null);
+  const [videoLink, setVideoLink] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [isUploading, setIsUploading] = useState(false);
+  const [error, setError] = useState('')
+  const token = getToken()
 
-  const handleUploadProgress = (progressEvent) => {
-    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-    setUploadProgress(progress);
+  const handleVideoChange = (e) => {
+    const selectedVideo = e.target.files[0];
+    setVideo(selectedVideo);
+    setVideoLink(''); 
+    console.log(selectedVideo)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('video', video);
-    formData.append('title', title);
-    formData.append('description', description);
-    try {
-      setIsUploading(true);
-      const response = await fetch('https://backend-dc1w.onrender.com/videos', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: formData,
-        onUploadProgress: handleUploadProgress
-      });
-      const data = await response.json();
-      console.log(data);
-      // Reset form fields after successful upload
-      setVideo(null);
-      setTitle('');
-      setDescription('');
 
-      // Fetch new video list
-      const videoResponse = await fetch('https://backend-dc1w.onrender.com/videos', {
-        headers: {
-          'Authorization': `Bearer ${localStorage?.getItem('token')}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
-      const videoData = await videoResponse.json();
-      if (videoData) {
-        setVideos(videoData);
+    if (video || videoLink) {
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+
+      if (video) {
+        formData.append('video', video);
+
+        fetch('https://backend-dc1w.onrender.com/videos', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setVideo(null);
+            setTitle('');
+            setDescription('');
+          })
+          .catch((error) => {
+            setError(error.errors);
+          });
+      } else if (videoLink) {
+        formData.append('video', videoLink);
+        fetch('https://backend-dc1w.onrender.com/videos', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setVideoLink('');
+            setTitle('');
+            setDescription('');
+          })
+          .catch((error) => {
+            setError(error.errors);
+          });
+        // Handle video link submission
+        // Perform necessary logic (e.g., validate link, process video)
+
+        setVideoLink(''); // Clear video link after submission
       }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsUploading(false);
-      setUploadProgress(0);
+    } else {
+      setError('Please select a video file or provide a video link.');
     }
+
+    // const formData = new FormData();
+    // formData.append("video", video);
+    // formData.append("title", title);
+    // formData.append("description", description);
+  
+   
+    // fetch("https://backend-dc1w.onrender.com/videos", {
+    //   method: "POST",
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`
+    //   },
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //    console.log(data)
+    //    setVideo(null);
+    //    setTitle('');
+    //    setDescription('');
+    //   })
+    //   .catch((error) => {
+    //     setError(error.errors);
+    //   });
   };
 
   return (
@@ -80,23 +122,29 @@ const UploadVideo = ({ setVideos }) => {
           />
         </div>
         <div>
+            <label htmlFor="video-link">Provide Link:</label>
+            <input
+              type="text"
+              id="video-link"
+              value={videoLink}
+              onChange={(e) => setVideoLink(e.target.value)}
+            />
+          </div>
+        <div>
           <label htmlFor="video">Video:</label>
           <input
             type="file"
             id="video"
-            onChange={(e) => setVideo(e.target.files[0])}
             accept="video/*"
-            required
+            onChange={handleVideoChange}
           />
         </div>
-        <button type="submit" disabled={isUploading}>
-          {isUploading ? `Uploading...${uploadProgress}%` : 'Upload'}
-        </button>
+        <button type="submit" onClick={handleSubmit}> Upload </button>
       </form>
       {video && (
         <div>
           <video controls>
-            <source src={URL.createObjectURL(video)} type={video.type} />
+            <source src={URL.createObjectURL(video)} />
             Your browser does not support HTML5 video.
           </video>
         </div>

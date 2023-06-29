@@ -15,6 +15,12 @@ function Reviews({ movieId }) {
   const token = getToken()
 
   useEffect(() => {
+    // const reviewsFromLocalStorage = JSON.parse(localStorage.getItem("reviews"));
+    // if (reviewsFromLocalStorage) {
+    //   const filteredReviews = reviewsFromLocalStorage.filter((review) => review.movie_id === movieId);
+    //   setReviews(filteredReviews);
+    //   setLoading(false);
+    // } else {
     fetch(`https://backend-dc1w.onrender.com/reviews`,{
       headers: {
         // "Content-Type": "application/json",
@@ -25,12 +31,14 @@ function Reviews({ movieId }) {
       .then((data) => {
         const filteredReviews = data.filter((review) => review.movie_id === movieId);
         setReviews(filteredReviews);
+        localStorage.setItem("reviews", JSON.stringify(filteredReviews)); // save reviews to local storage
         setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
         setLoading(false);
       });
+    // }
   }, [movieId,token]);
 
   const handleAddReview = () => {
@@ -115,6 +123,7 @@ function Reviews({ movieId }) {
         <div className="user">
           <FontAwesomeIcon icon={faUser} />
           {review.user ? <h4>{review.user.username}</h4> : null}
+          {console.log(review.user) ? <h4>{console.log(review.user.username)}</h4> : null}
         </div>
         {editMode[review.id] ? (
           <>

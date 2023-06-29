@@ -50,7 +50,7 @@
   margin-bottom: 1rem;
   border-radius: 5px;
   border: none;
-  background-color: #570b0b;
+  /* background-color: #570b0b; */
 }
 
 .upload-form input[type="file"] {
@@ -102,7 +102,7 @@
 
 .upload-form input[type='file']:hover::before {
   background-color: #fff;
-  color: #e50914;
+  color: rgb(255, 187, 0);
 }
 
 .upload-form .success-message {
