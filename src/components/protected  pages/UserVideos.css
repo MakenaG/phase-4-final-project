@@ -60,8 +60,8 @@
   line-height: 1.2;
 }
 
-.video-button {
-  background-color: #f94144;
+.video-button, .video-button2 {
+  background-color: #050505;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -71,10 +71,13 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.video-button:hover {
-  background-color: #ff5055;
+.video-button:hover, .video-button2:hover {
+  background-color: white;
+  color: rgb(255, 187, 0);
 }
-
+.video-button2{
+  margin-right: 0;
+}
 .text-danger {
   color: #dc3545;
   font-size: 0.8rem;

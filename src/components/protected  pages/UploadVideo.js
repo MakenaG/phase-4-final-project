@@ -41,6 +41,8 @@ const UploadVideo = ({ setVideos }) => {
             setVideo(null);
             setTitle('');
             setDescription('');
+            setVideos(prevVideos => [...prevVideos, data]); // Add the new video to the videos array
+
           })
           .catch((error) => {
             setError(error.errors);
@@ -60,6 +62,8 @@ const UploadVideo = ({ setVideos }) => {
             setVideoLink('');
             setTitle('');
             setDescription('');
+            setVideos(prevVideos => [...prevVideos, data]); // Add the new video to the videos array
+
           })
           .catch((error) => {
             setError(error.errors);

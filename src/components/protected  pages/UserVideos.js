@@ -9,39 +9,28 @@ const UserVideos = () => {
   const [description, setDescription] = useState('');
    let token = getToken()
   // Define a common function to fetch videos
-  // const fetchVideos = async () => {
-  //   try {
-  //     const response = await fetch('https://backend-dc1w.onrender.com/videos', {
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem('token')}`,
-  //         'Content-Type': 'application/json'
-  //       }
-  //     });
-  //     const data = await response.json();
-  //     setVideos(data || []);
-  //   } catch (error) {
-  //     setErrors(error);
-  //   }
-  // };
-
-     useEffect(() => {
-      // Fetch films data and update state
-      fetch("https://backend-dc1w.onrender.com/videos",{
+  const fetchVideos = async () => {
+    try {
+      const response = await fetch('https://backend-dc1w.onrender.com/videos', {
         headers: {
-            Authorization: `Bearer ${token}`
-          }
-      })
-        .then((res) => {
-          if(res.ok){
-            res.json().then((data)=>{
-              setVideos(data)
-            })
-          }else{
-            res.json().then((err)=>setErrors([err.errors]))
-          }
-        })
-    },[setVideos, setErrors,token])
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setVideos(data || []);
+    } catch (error) {
+      setErrors(error);
+    }
+  };
 
+  useEffect(() => {
+    fetchVideos('https://backend-dc1w.onrender.com/videos');
+  }, []);
+
+  useEffect(() => {
+    fetchVideos('https://backend-dc1w.onrender.com/videos');
+  }, [videos]);
   // Delete a video by id
   const handleDelete = async (id) => {
     try {
@@ -75,13 +64,12 @@ const UserVideos = () => {
 
       if (response.ok) {
         setDescription('')
-        // fetchVideos('https://backend-dc1w.onrender.com/videos');
+        fetchVideos('https://backend-dc1w.onrender.com/videos');
       }
     } catch (error) {
       console.error(error);
     }
   };
-// console.log(videos)
   // Render the videos list and upload component
   return (
     <div className="videos-container">
@@ -91,11 +79,7 @@ const UserVideos = () => {
         {videos.map((video) => (
           <li className="vid-list" key={video.id}>
             <div className="vid-item">
-              {/* <video
-                src={video.video}
-                title={video.title}
-                description={video.description}
-              ></video> */}
+            
               <iframe
               src={video.video}
               title={video.title}
@@ -106,7 +90,7 @@ const UserVideos = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-            <h4>Description</h4>
+            <h4>{video.title}</h4>
               <p>{video.description}</p>
               <div className="vid-info">
                 <h4>
@@ -114,12 +98,13 @@ const UserVideos = () => {
                     type="text"
                     value={description}
                     defaultValue={video.description}
+                    placeholder='update description'
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </h4>
                 <p>{video.owner}</p>
                 <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
-                <button className='video-button' onClick={() => handleUpdate(video.id)}>Update</button>
+                <button className='video-button2' onClick={() => handleUpdate(video.id)}>Update</button>
               </div>
             </div>
           </li>
