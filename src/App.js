@@ -29,7 +29,6 @@ function App() {
   const renderComponentWithSidebar = (Component) => {
     return (
       <>
-        {/* <Navbar isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn} /> */}
         <div className="container-fluid bg-warning">
           <div className="row">
             <div className="col-md-2">
@@ -40,7 +39,6 @@ function App() {
             </div>
           </div>
         </div>
-        {/* {isLoginPage ? null : <Footer />} */}
       </>
     );
   };
@@ -62,10 +60,6 @@ function App() {
            setIsLoggedIn={setLoggedIn}/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/reset' element={<Passwordreset/>}></Route>
-          {/* <Route path='/favevids' element={<FaveVids/>}></Route>
-          <Route path='/usercomments' element={<UserComments/>}></Route>
-          <Route path='/profile' element={<Profile/>}></Route>
-          <Route path='/uservideos' element={<UserVideos/>}></Route> */}
           <Route path="/favorites/:id" element={renderComponentWithSidebar(Fav)} />
           <Route exact path="/favorites" element={renderComponentWithSidebar(FaveVids)} />
           <Route path="/usercomments" element={renderComponentWithSidebar(UserComments)} />

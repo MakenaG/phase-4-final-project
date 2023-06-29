@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './UserVideos.css';
 import UploadVideo from './UploadVideo';
-import UserComments from './UserComments';
+import { getToken } from '../utils/auth';
 
 const UserVideos = () => {
   const [videos, setVideos] = useState([]);
   const [errors, setErrors] = useState([]);
   const [description, setDescription] = useState('');
-
+   let token = getToken()
   // Define a common function to fetch videos
-  const fetchVideos = async (url) => {
+  const fetchVideos = async () => {
     try {
-      const response = await fetch(url, {
+      const response = await fetch('https://backend-dc1w.onrender.com/videos', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
@@ -24,16 +24,13 @@ const UserVideos = () => {
     }
   };
 
-  // Fetch all videos on initial render
   useEffect(() => {
     fetchVideos('https://backend-dc1w.onrender.com/videos');
   }, []);
 
-  // Fetch user videos when videos state changes
   useEffect(() => {
     fetchVideos('https://backend-dc1w.onrender.com/videos');
   }, [videos]);
-
   // Delete a video by id
   const handleDelete = async (id) => {
     try {
@@ -66,13 +63,13 @@ const UserVideos = () => {
       });
 
       if (response.ok) {
+        setDescription('')
         fetchVideos('https://backend-dc1w.onrender.com/videos');
       }
     } catch (error) {
       console.error(error);
     }
   };
-
   // Render the videos list and upload component
   return (
     <div className="videos-container">
@@ -82,24 +79,35 @@ const UserVideos = () => {
         {videos.map((video) => (
           <li className="vid-list" key={video.id}>
             <div className="vid-item">
+            
               <iframe
-                src={`https://www.youtube.com/embed/Nv2ZM6zE3zw`}
-                title={video.title}
-                description={video.description}
-              ></iframe>
-              
-              <div className="vid-info">
-                <h4>
+              src={video.video}
+              title={video.title}
+              description={video.description}
+              autoPlay
+              muted
+              loop
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <div className="vid-info">
+            <center><h4>{video.title}</h4></center>
+              <p>{video.description}</p>
+                <p>
                   <input
+                    className='description'
                     type="text"
                     value={description}
                     defaultValue={video.description}
+                    placeholder='update description'
                     onChange={(e) => setDescription(e.target.value)}
                   />
-                </h4>
+                </p>
                 <p>{video.owner}</p>
-                <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
-                <button className='video-button' onClick={() => handleUpdate(video.id)}>Update</button>
+                <div className='btn-cont'>
+                  <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
+                  <button className='video-button2' onClick={() => handleUpdate(video.id)}>Update</button>
+                </div>
               </div>
             </div>
           </li>

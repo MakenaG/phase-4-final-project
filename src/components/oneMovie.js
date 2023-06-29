@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Reviews from "./Reviews";
 import { getUser,getToken } from "./utils/auth";
-import UserComments from "./protected  pages/UserComments";
 
 function OneMovie(){
     const { id } = useParams();
@@ -150,7 +149,8 @@ function OneMovie(){
           </Col>
         </Row>
         </div>
-      </Container></div>
+      </Container>
+      </div>
     )
 }
 

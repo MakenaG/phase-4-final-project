@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import { useNavigate} from "react-router-dom";
 
-export const Passwordreset = (props) => {
+export const Passwordreset = () => {
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
