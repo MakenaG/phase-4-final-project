@@ -90,21 +90,24 @@ const UserVideos = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-            <h4>{video.title}</h4>
+            <div className="vid-info">
+            <center><h4>{video.title}</h4></center>
               <p>{video.description}</p>
-              <div className="vid-info">
-                <h4>
+                <p>
                   <input
+                    className='description'
                     type="text"
                     value={description}
                     defaultValue={video.description}
                     placeholder='update description'
                     onChange={(e) => setDescription(e.target.value)}
                   />
-                </h4>
+                </p>
                 <p>{video.owner}</p>
-                <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
-                <button className='video-button2' onClick={() => handleUpdate(video.id)}>Update</button>
+                <div className='btn-cont'>
+                  <button className='video-button' onClick={() => handleDelete(video.id)}>Delete</button>
+                  <button className='video-button2' onClick={() => handleUpdate(video.id)}>Update</button>
+                </div>
               </div>
             </div>
           </li>
